@@ -27,6 +27,7 @@ namespace Oculus.Interaction.Samples
 {
     public class PoseUseSample : MonoBehaviour
     {
+        private GameObject TeleportManager;
         [SerializeField, Interface(typeof(IHmd))]
         private UnityEngine.Object _hmd;
         private IHmd Hmd { get; set; }
@@ -49,6 +50,8 @@ namespace Oculus.Interaction.Samples
 
         protected virtual void Start()
         {
+            TeleportManager = GameObject.Find("TeleportManager");
+
             this.AssertField(Hmd, nameof(Hmd));
             this.AssertField(_poseActiveVisualPrefab, nameof(_poseActiveVisualPrefab));
 
@@ -63,6 +66,11 @@ namespace Oculus.Interaction.Samples
                 int poseNumber = i;
                 _poses[i].WhenSelected += () => ShowVisuals(poseNumber);
                 _poses[i].WhenUnselected += () => HideVisuals(poseNumber);
+
+                if(i == 0)
+                {
+                    _poses[i].WhenSelected += () => DoTeleport();
+                }
             }
         }
         private void ShowVisuals(int poseNumber)
@@ -91,6 +99,11 @@ namespace Oculus.Interaction.Samples
         private void HideVisuals(int poseNumber)
         {
             _poseActiveVisuals[poseNumber].gameObject.SetActive(false);
+        }
+
+        private void DoTeleport()
+        {
+            TeleportManager.SendMessage("Teleport");
         }
     }
 }
