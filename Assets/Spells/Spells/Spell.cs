@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spell : MonoBehaviour
 {
     [SerializeField]
-    public SpellName spellName;
+    public string spellName;
 
     [SerializeField]
     public string description;
@@ -24,4 +24,7 @@ public class Spell : MonoBehaviour
 
     [SerializeField]
     public Sprite handGesture;
+
+    [SerializeField]
+    public int handIndex;
 }

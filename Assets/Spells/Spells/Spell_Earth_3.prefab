@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellName: 8
-  description: "\uC9C0\uAD6C\uB97C \uB358\uC9D1\uB2C8\uB2E4."
+  description: "\uB7F4\uCEE4 1\uC778\uCE6D \uC2DC\uC810"
   element: 2
   parentSpell: {fileID: 0}
   spellIcon: {fileID: 21300000, guid: 8179e16e6a600c94297bf93305f85207, type: 3}
   level: 3
   handGesture: {fileID: 21300000, guid: b524da7e4cc6e4c09b63b2347b8c8f12, type: 3}
+  handIndex: 1

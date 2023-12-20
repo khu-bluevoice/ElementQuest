@@ -58,3 +58,8 @@ MonoBehaviour:
   - {fileID: -5273281454240106258, guid: df2a1b59cd6ea4f5aad45bb02b083b52, type: 3}
   - {fileID: -5273281454240106258, guid: e2ea8f917f7bd47a6bec58f49d01389c, type: 3}
   isSpellActive: 010000010000010000010000
+  startSpell: {fileID: -5273281454240106258, guid: f888ff2efe491481987ad73e4484d593, type: 3}
+  endSpell: {fileID: -5273281454240106258, guid: df46be18eb4974b80ab980b5635ea1f5, type: 3}
+  moveSpell: {fileID: -5273281454240106258, guid: a1bf89f32409740e997ab971eeb8c61b, type: 3}
+  spellSelector: {fileID: 0}
+  selectedSpell: {fileID: 0}

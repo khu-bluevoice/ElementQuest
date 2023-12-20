@@ -7,7 +7,7 @@ using UnityEngine;
 public class SpellSelector : MonoBehaviour
 {
     [SerializeField]
-    public Spell[] spells;
+    public List<Spell> spells = new List<Spell>();
     private List<GameObject> spellGameObjects = new List<GameObject>();
 
     public GameObject spellCardPrefab;
@@ -20,8 +20,8 @@ public class SpellSelector : MonoBehaviour
 
     void Start()
     {
-        float startX = spells.Length * width / -2 + width / 2;
-        for (int i = 0; i < spells.Length; i++)
+        float startX = spells.Count * width / -2 + width / 2;
+        for (int i = 0; i < spells.Count; i++)
         {
             Vector3 position = new Vector3(startX + i * width, 0, 0);
             GameObject a = Instantiate(spellCardPrefab, this.transform);

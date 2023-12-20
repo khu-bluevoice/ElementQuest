@@ -51,3 +51,4 @@ MonoBehaviour:
   spellIcon: {fileID: 21300000, guid: 2face665c7883ec43bb0ece3bacd698f, type: 3}
   level: 2
   handGesture: {fileID: 21300000, guid: a0ed7e06f48384eaaa29beda2f866ff9, type: 3}
+  handIndex: 1
