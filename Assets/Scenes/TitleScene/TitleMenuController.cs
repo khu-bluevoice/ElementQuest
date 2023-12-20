@@ -8,6 +8,6 @@ public class TitleMenuController : MonoBehaviour
     public void OnStartClick()
     {
         // TODO. Change this to real Scene.
-        //SceneManager.LoadScene("");
+        SceneManager.LoadScene("TestScene");
     }
 }

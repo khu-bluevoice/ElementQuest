@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellName: 6
-  description: "\uBB3C\uBCBC\uB77D\uC744 \uBFCC\uB9BD\uB2C8\uB2E4."
+  description: "\uB3CC\uC744 \uB358\uC9D1\uB2C8\uB2E4."
   element: 2
   parentSpell: {fileID: 0}
   spellIcon: {fileID: 21300000, guid: 77e7f5cdb602ff4498964b234c64c20f, type: 3}

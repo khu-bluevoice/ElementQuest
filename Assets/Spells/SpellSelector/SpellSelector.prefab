@@ -47,4 +47,4 @@ MonoBehaviour:
   spells:
   - {fileID: -5273281454240106258, guid: 0f6eb70bcbf994ab0bf78645f3638250, type: 3}
   - {fileID: -5273281454240106258, guid: d67d8bd44434a4cec8c0f94d50d81dba, type: 3}
-  spellCardPrefab: {fileID: 1705301389528827093, guid: 88b89188adfe740d0875768c373af25d, type: 3}
+  spellCardPrefab: {fileID: 1705301389528827093, guid: c1e7483c9fc964301bde4eb8a3a703ae, type: 3}

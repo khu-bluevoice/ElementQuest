@@ -7,6 +7,9 @@ public class SpellManager : MonoBehaviour
     [SerializeField]
     public Spell[] spells;
 
+    [SerializeField]
+    public bool[] isSpellActive;
+
     // Start is called before the first frame update
     void Start()
     {
