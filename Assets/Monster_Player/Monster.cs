@@ -39,7 +39,7 @@ public class Monster : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         target = player.transform;
-        Debug.Log(target.position);
+        //Debug.Log(target.position);
 
         if (nav.enabled)
         {
@@ -72,14 +72,13 @@ public class Monster : MonoBehaviour
         {
             case Type.Short:
                 targetRadius = 0.5f;
-                targetRange = 0.5f;
-                break;
-
-            case Type.Long:
-                targetRadius = 0.1f;
                 targetRange = 1f;
                 break;
 
+            case Type.Long:
+                targetRadius = 1f;
+                targetRange = 5f;
+                break;
         }
 
         RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, targetRadius, transform.forward, targetRange, LayerMask.GetMask("Player"));

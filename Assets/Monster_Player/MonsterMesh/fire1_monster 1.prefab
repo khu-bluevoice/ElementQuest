@@ -232,6 +232,59 @@ Transform:
   - {fileID: 217281182116689324}
   m_Father: {fileID: 2475673508878529755}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1019737464652622671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1684505951984921196}
+  - component: {fileID: 3649998968924696369}
+  m_Layer: 0
+  m_Name: AttackRange
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1684505951984921196
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019737464652622671}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.006, z: 0.585}
+  m_LocalScale: {x: 0.95013, y: 1.2873, z: 1.0826359}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2475673508878529755}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3649998968924696369
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019737464652622671}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1087088922668587295
 GameObject:
   m_ObjectHideFlags: 0
@@ -4012,6 +4065,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1684505951984921196}
   - {fileID: 8344630234652944373}
   - {fileID: 4645540858876757781}
   - {fileID: 3329812642119951151}
@@ -4116,8 +4170,8 @@ MonoBehaviour:
   isChase: 0
   isDamaged: 0
   isAttack: 0
-  meleeAttack: {fileID: 0}
-  monsterSkill: {fileID: 9052813570278170021, guid: f9b3633f0c42b714e976c25191c061fb, type: 3}
+  meleeAttack: {fileID: 3649998968924696369}
+  monsterSkill: {fileID: 0}
   target: {fileID: 0}
   hp: 100
   MonsterElement: 1

@@ -9,7 +9,7 @@ public class Earth1 : Skill2
     {
         element = "Earth";
         damage = 10;
-        gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 100, 0));
+        gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 200, 0));
     }
 
     // Update is called once per frame

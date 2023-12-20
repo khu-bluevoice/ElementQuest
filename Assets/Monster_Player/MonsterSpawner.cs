@@ -33,11 +33,6 @@ public class MonsterSpawner : MonoBehaviour
         }
     }
 
-    void SpawnNextWave()
-    {
-
-    }
-
     void SpawnStage()
     {
         if (canSpawn)
