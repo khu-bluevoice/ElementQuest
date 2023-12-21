@@ -162,18 +162,18 @@ public class SkillScript : MonoBehaviour
         {
             Instantiate(Lv3_earth, new Vector3(playerhand.transform.position.x, playerhand.transform.position.y - playerheight, playerhand.transform.position.z), playerhand.transform.rotation);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Instantiate(Lv1_wind, playerhand.transform.position, playerhand.transform.rotation);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Instantiate(Lv2_wind, playerhand.transform.position, playerhand.transform.rotation);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Vector3 newposition = playerhand.transform.position + playerhand.transform.forward * 5;
-            Instantiate(Lv3_wind, new Vector3(newposition.x, newposition.y - playerheight, newposition.z), Lv3_wind.transform.rotation);
-        }
+        //else if (Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    Instantiate(Lv1_wind, playerhand.transform.position, playerhand.transform.rotation);
+        //}
+        //else if (Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    Instantiate(Lv2_wind, playerhand.transform.position, playerhand.transform.rotation);
+        //}
+        //else if (Input.GetKeyDown(KeyCode.Alpha3))
+        //{
+        //    Vector3 newposition = playerhand.transform.position + playerhand.transform.forward * 5;
+        //    Instantiate(Lv3_wind, new Vector3(newposition.x, newposition.y - playerheight, newposition.z), Lv3_wind.transform.rotation);
+        //}
     }
 }

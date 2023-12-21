@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -78,6 +79,17 @@ public class SpellManager : MonoBehaviour
         }
     }
 
+    void selectSpellOfSelector(SpellName detectedSpell)
+    {
+        int i = 0;
+        foreach (Spell spell in spellSelector.spells)
+        {
+            if (spell.spellName == detectedSpell)
+                spellSelector.SelectSpell(i);
+            i++;
+        }
+    }
+
     // 동작을 인식
     public void HandleSpellDetected(SpellName detectedSpell)
     {
@@ -92,31 +104,26 @@ public class SpellManager : MonoBehaviour
             // skill cast
             SkillManager.CastSkill(detectedSpell);
             // update spell selector
-            int i = 0;
-            foreach(Spell spell in spellSelector.spells)
-            {
-                if (spell.spellName == detectedSpell)
-                    spellSelector.SelectSpell(i);
-                i++;
-            }
+            selectSpellOfSelector(detectedSpell);
             UpdateSelectableSpells();
         }
         else if (detectedSpell == SpellName.SPELL_START)
         {
             selectedSpell = startSpell;
+            selectSpellOfSelector(detectedSpell);
             UpdateSelectableSpells();
         }
         else
         {
             // 스킬 사용 업데이트
             int index = spellNames.IndexOf(detectedSpell);
-            Debug.Log(index);
             if (index != -1)
             {
                 if (isSpellActive[index])
                 {
                     // 스킬 선택
                     selectedSpell = spells[index];
+                    selectSpellOfSelector(detectedSpell);
                     UpdateSelectableSpells();
                 }
             }

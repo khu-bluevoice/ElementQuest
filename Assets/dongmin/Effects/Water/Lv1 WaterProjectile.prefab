@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: stopAction
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 198565110370433080, guid: 1c48df1cb0f3d824c8041c90c684038b, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 199632313697423724, guid: 1c48df1cb0f3d824c8041c90c684038b, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1

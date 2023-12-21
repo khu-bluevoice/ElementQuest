@@ -1,8 +1,6 @@
 using Oculus.Interaction.Input;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Assertions;
-using Assets;
 
 namespace Oculus.Interaction.Samples
 {
@@ -21,10 +19,10 @@ namespace Oculus.Interaction.Samples
         [SerializeField]
         private ActiveStateSelector[] _poses;
 
-        //[SerializeField]
-        private Material[] _onSelectIcons;
+        [SerializeField]
+        private Material _onSelectIcon;
 
-        //[SerializeField]
+        [SerializeField]
         private GameObject _poseActiveVisualPrefab;
 
         private GameObject[] _poseActiveVisuals;
@@ -36,6 +34,8 @@ namespace Oculus.Interaction.Samples
 
         protected virtual void Start()
         {
+            TeleportManager = GameObject.Find("TeleportManager");
+
             this.AssertField(Hmd, nameof(Hmd));
             this.AssertField(_poseActiveVisualPrefab, nameof(_poseActiveVisualPrefab));
 
@@ -44,14 +44,19 @@ namespace Oculus.Interaction.Samples
             {
                 _poseActiveVisuals[i] = Instantiate(_poseActiveVisualPrefab);
                 _poseActiveVisuals[i].GetComponentInChildren<TextMeshPro>().text = _poses[i].name;
-                //_poseActiveVisuals[i].GetComponentInChildren<ParticleSystemRenderer>().material = _onSelectIcons[i];
+                _poseActiveVisuals[i].GetComponentInChildren<ParticleSystemRenderer>().material = _onSelectIcon;
                 _poseActiveVisuals[i].SetActive(false);
 
                 int poseNumber = i;
-                //_poses[i].WhenSelected += () => ShowVisuals(poseNumber);
-                //_poses[i].WhenUnselected += () => HideVisuals(poseNumber);
+                _poses[i].WhenSelected += () => ShowVisuals(poseNumber);
+                _poses[i].WhenUnselected += () => HideVisuals(poseNumber);
 
                 AndroidToast.I.ShowToastMessage("Start" + i);
+
+                if (i == 0)
+                {
+                    _poses[i].WhenSelected += () => DoTeleport();
+                }
 
                 switch (i)
                 {
@@ -103,6 +108,7 @@ namespace Oculus.Interaction.Samples
                 }
             }
         }
+
         private void ShowVisuals(int poseNumber)
         {
             if (!Hmd.TryGetRootPose(out Pose hmdPose))

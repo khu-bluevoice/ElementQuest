@@ -27,7 +27,8 @@ using UnityEngine;
 
 public class PoseUseSample : MonoBehaviour
 {
-    private GameObject SpellManager;
+    [SerializeField]
+    private SpellManager SpellManager;
     private GameObject TeleportManager;
     [SerializeField, Interface(typeof(IHmd))]
     private UnityEngine.Object _hmd;
@@ -37,7 +38,7 @@ public class PoseUseSample : MonoBehaviour
     private ActiveStateSelector[] _poses;
 
     [SerializeField]
-    private Material[] _onSelectIcons;
+    private Material _onSelectIcon;
 
     [SerializeField]
     private GameObject _poseActiveVisualPrefab;
@@ -50,71 +51,79 @@ public class PoseUseSample : MonoBehaviour
     }
 
     protected virtual void Start()
-    {  
+    {
         TeleportManager = GameObject.Find("TeleportManager");
-        SpellManager = GameObject.Find("NewSpellManager");
 
         this.AssertField(Hmd, nameof(Hmd));
         this.AssertField(_poseActiveVisualPrefab, nameof(_poseActiveVisualPrefab));
 
         _poseActiveVisuals = new GameObject[_poses.Length];
+        Debug.Log("Test");
         for (int i = 0; i < _poses.Length; i++)
         {
+            Debug.Log("Test123");
+
             _poseActiveVisuals[i] = Instantiate(_poseActiveVisualPrefab);
             _poseActiveVisuals[i].GetComponentInChildren<TextMeshPro>().text = _poses[i].name;
-            _poseActiveVisuals[i].GetComponentInChildren<ParticleSystemRenderer>().material = _onSelectIcons[i];
+            _poseActiveVisuals[i].GetComponentInChildren<ParticleSystemRenderer>().material = _onSelectIcon;
             _poseActiveVisuals[i].SetActive(false);
 
             int poseNumber = i;
             _poses[i].WhenSelected += () => ShowVisuals(poseNumber);
             _poses[i].WhenUnselected += () => HideVisuals(poseNumber);
 
+            _poses[i].WhenSelected += () => DoTeleport();
+
+            Debug.Log(_poses[i]);
+
             switch (i)
             {
                 case 0:
-                    _poses[i].WhenSelected += () => SpellManager.SendMessage("HandleSpellDetected", SpellName.TELEPORT);
+                    Debug.Log(i);
+                    _poses[i].WhenSelected += () => DoTeleport();
                     break;
                 case 1:
-                    _poses[i].WhenSelected += () => SpellManager.SendMessage("HandleSpellDetected", SpellName.SPELL_START);
+                    Debug.Log(i);
+                    _poses[i].WhenSelected += () => SpellManager.HandleSpellDetected(SpellName.SPELL_START);
                     break;
                 case 2:
-                    _poses[i].WhenSelected += () => SpellManager.SendMessage("HandleSpellDetected", SpellName.SPELL_END);
+                    _poses[i].WhenSelected += () => SpellManager.HandleSpellDetected(SpellName.SPELL_END);
                     break;
                 case 3:
-                    _poses[i].WhenSelected += () => SpellManager.SendMessage("HandleSpellDetected", SpellName.WATER_LV1);
+                    _poses[i].WhenSelected += () => SpellManager.HandleSpellDetected(SpellName.WATER_LV1);
                     break;
                 case 4:
-                    _poses[i].WhenSelected += () => SpellManager.SendMessage("HandleSpellDetected", SpellName.WATER_LV2);
+                    _poses[i].WhenSelected += () => SpellManager.HandleSpellDetected(SpellName.WATER_LV2);
                     break;
                 case 5:
-                    _poses[i].WhenSelected += () => SpellManager.SendMessage("HandleSpellDetected", SpellName.WATER_LV3);
+                    _poses[i].WhenSelected += () => SpellManager.HandleSpellDetected(SpellName.WATER_LV3);
                     break;
                 case 6:
-                    _poses[i].WhenSelected += () => SpellManager.SendMessage("HandleSpellDetected", SpellName.FIRE_LV1);
+                    _poses[i].WhenSelected += () => SpellManager.HandleSpellDetected(SpellName.FIRE_LV1);
                     break;
                 case 7:
-                    _poses[i].WhenSelected += () => SpellManager.SendMessage("HandleSpellDetected", SpellName.FIRE_LV2);
+                    _poses[i].WhenSelected += () => SpellManager.HandleSpellDetected(SpellName.FIRE_LV2);
                     break;
                 case 8:
-                    _poses[i].WhenSelected += () => SpellManager.SendMessage("HandleSpellDetected", SpellName.FIRE_LV3);
+                    _poses[i].WhenSelected += () => SpellManager.HandleSpellDetected(SpellName.FIRE_LV3);
                     break;
                 case 9:
-                    _poses[i].WhenSelected += () => SpellManager.SendMessage("HandleSpellDetected", SpellName.EARTH_LV1);
+                    _poses[i].WhenSelected += () => SpellManager.HandleSpellDetected(SpellName.EARTH_LV1);
                     break;
                 case 10:
-                    _poses[i].WhenSelected += () => SpellManager.SendMessage("HandleSpellDetected", SpellName.EARTH_LV2);
+                    _poses[i].WhenSelected += () => SpellManager.HandleSpellDetected(SpellName.EARTH_LV2);
                     break;
                 case 11:
-                    _poses[i].WhenSelected += () => SpellManager.SendMessage("HandleSpellDetected", SpellName.EARTH_LV3);
+                    _poses[i].WhenSelected += () => SpellManager.HandleSpellDetected(SpellName.EARTH_LV3);
                     break;
                 case 12:
-                    _poses[i].WhenSelected += () => SpellManager.SendMessage("HandleSpellDetected", SpellName.WIND_LV1);
+                    _poses[i].WhenSelected += () => SpellManager.HandleSpellDetected(SpellName.WIND_LV1);
                     break;
                 case 13:
-                    _poses[i].WhenSelected += () => SpellManager.SendMessage("HandleSpellDetected", SpellName.WIND_LV2);
+                    _poses[i].WhenSelected += () => SpellManager.HandleSpellDetected(SpellName.WIND_LV2);
                     break;
                 case 14:
-                    _poses[i].WhenSelected += () => SpellManager.SendMessage("HandleSpellDetected", SpellName.WIND_LV3);
+                    _poses[i].WhenSelected += () => SpellManager.HandleSpellDetected(SpellName.WIND_LV3);
                     break;
             }
         }
@@ -145,11 +154,6 @@ public class PoseUseSample : MonoBehaviour
     private void HideVisuals(int poseNumber)
     {
         _poseActiveVisuals[poseNumber].gameObject.SetActive(false);
-    }
-
-    private void CastSpell()
-    {
-        SpellManager.SendMessage("HandleSpellDetected");
     }
 
     private void DoTeleport()
