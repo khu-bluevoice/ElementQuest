@@ -28,6 +28,10 @@ public class Monster : MonoBehaviour
     public Element monsterElement;
     public Element skillElemnt;
 
+    //for text flooting
+    public GameObject hudDamageText;
+    public Transform hudPos;
+
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
@@ -146,7 +150,13 @@ public class Monster : MonoBehaviour
     // 諛붾엺?띿꽦 紐ъ뒪?곕뒗 遺??ㅽ궗???쏀븯??
     public virtual void Damaged(Element skillElement, float damage)
     {
-        if(monsterElement == Element.Fire)
+        //for floating text
+        //GameObject hudText = Instantiate(hudDamageText); // 생성할 텍스트 오브젝트
+        //hudText.transform.position = hudPos.position; // 표시될 위치
+        //hudText.GetComponent<DamageText>().damage = damage; // 데미지 전달
+        //Damaged(skillElement, damage);
+
+        if (monsterElement == Element.Fire)
         {
             if (skillElement == Element.Water)
             {
