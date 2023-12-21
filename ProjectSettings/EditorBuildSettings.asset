@@ -6,11 +6,26 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Test/Scene/MainStage.unity
+    path: Assets/Ryu/Levels/CenterHall.unity
     guid: 5515a86994d4c9f44bb888a816a33c6c
-  - enabled: 0
-    path: Assets/Oculus/Interaction/Samples/Scenes/Examples/PoseExamples.unity
-    guid: 4fe358b21fe17764db89a9ab9f202327
+  - enabled: 1
+    path: Assets/Ryu/Levels/LongHall.unity
+    guid: 7c1a19cf7c20a1746b42911d6e0553f4
+  - enabled: 1
+    path: Assets/Ryu/Levels/Outside.unity
+    guid: 669c52b0762d1f74cac40951df03758b
+  - enabled: 1
+    path: Assets/Ryu/Levels/GoblinCave.unity
+    guid: e0fa28be1b0152442b99ed5eb6a48d25
+  - enabled: 1
+    path: Assets/Ryu/Levels/CrystalCaves.unity
+    guid: fc420cf22d513fd479a89328ea0f2f7a
+  - enabled: 1
+    path: Assets/Ryu/Levels/TortureRoom.unity
+    guid: ed7607c01828d3c45910df03663180e1
+  - enabled: 1
+    path: Assets/Ryu/Levels/GameClear.unity
+    guid: adfcda6405b73b14cb0e7e5be063bd72
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bf9cfcd07310f994793a4398bfd79442, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 025abfc92d36f404aa4fce0adfca31c3, type: 2}
