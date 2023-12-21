@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardBackSprite: {fileID: 21300000, guid: d2d36aad293a40744bddde33e71a5344, type: 3}
-  cardElementSprite: {fileID: 21300000, guid: c500c460617c09147b3e9bd59b4caee0, type: 3}
+  cardElementSprite: {fileID: 21300000, guid: ac380a685c9801945bbed4bbf441deb2, type: 3}
   cardFrontSprite: {fileID: 21300000, guid: c500c460617c09147b3e9bd59b4caee0, type: 3}
   cardFrameSprite: {fileID: 21300000, guid: da5204fcb9c212545a954930c4150852, type: 3}
   cardRibbonSprite: {fileID: 21300000, guid: a66ebf79450b8b347812aa5f3a628c81, type: 3}

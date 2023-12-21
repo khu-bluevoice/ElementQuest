@@ -50,6 +50,9 @@ public class SpellCardUI : MonoBehaviour
     GameObject DescriptionText;
 
     [SerializeField]
+    Image HandGestureImage;
+
+    [SerializeField]
     SpellIcon spellIcon;
 
     // Start is called before the first frame update
@@ -70,6 +73,7 @@ public class SpellCardUI : MonoBehaviour
             CardText.sprite = item.cardTextContainerSprite;
             CardRibbon.sprite = item.cardRibbonSprite;
             // update spell icon
+            HandGestureImage.sprite = spell.handGesture;
             spellIcon.image.sprite = spell.spellIcon;
         }
         if (this.isFlipped)
@@ -84,12 +88,12 @@ public class SpellCardUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-        if (time > 3)
-        {
-            Flip();
-            time = 0;
-        }
+        //time += Time.deltaTime;
+        //if (time > 3)
+        //{
+        //    Flip();
+        //    time = 0;
+        //}
     }
 
     public void Flip()
