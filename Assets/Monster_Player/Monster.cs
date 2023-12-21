@@ -8,12 +8,14 @@ public class Monster : MonoBehaviour
     public enum Type { Short, Long, Boss };
 
     public Type monsterType;
+
     public bool isChase;
     public bool isDamaged;
     public bool isAttack;
     public BoxCollider meleeAttack;
-    public GameObject monsterSkill;
+    public GameObject monsterSkillPos;
 
+    public GameObject monsterSkill;
 
     protected GameObject player;
 
@@ -71,12 +73,12 @@ public class Monster : MonoBehaviour
         switch (monsterType)
         {
             case Type.Short:
-                targetRadius = 0.5f;
-                targetRange = 1f;
+                targetRadius = 0.7f;
+                targetRange = 1.2f;
                 break;
 
             case Type.Long:
-                targetRadius = 1f;
+                targetRadius = 3f;
                 targetRange = 5f;
                 break;
         }
@@ -84,7 +86,7 @@ public class Monster : MonoBehaviour
         RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, targetRadius, transform.forward, targetRange, LayerMask.GetMask("Player"));
 
         if (rayHits.Length > 0 && !isAttack)
-        {
+        {           
             StartCoroutine(Attack());
         }
     }
@@ -93,7 +95,7 @@ public class Monster : MonoBehaviour
     {
         isChase = false;
         isAttack = true;
-        //anim.SetBool("Attack", true);
+        anim.SetBool("attack", true);
 
         switch (monsterType)
         {
@@ -108,9 +110,9 @@ public class Monster : MonoBehaviour
                 break;
             case Type.Long:
                 yield return new WaitForSeconds(1f);
-                GameObject instantBullet = Instantiate(monsterSkill, transform.position, transform.rotation);
-                Rigidbody rigidSkill = instantBullet.GetComponent<Rigidbody>();
-                rigidSkill.velocity = transform.forward * 20;
+                GameObject instantBullet = Instantiate(monsterSkill, monsterSkillPos.transform.position, monsterSkillPos.transform.rotation);
+                Rigidbody rigidSkill = instantBullet.GetComponent<Rigidbody>();                  
+                rigidSkill.velocity = transform.forward * 50;
 
                 yield return new WaitForSeconds(2f);
                 break;
@@ -118,13 +120,14 @@ public class Monster : MonoBehaviour
 
         isChase = true;
         isAttack = false;
-        //anim.SetBool("Attack", false);
+        anim.SetBool("attack", false);
     }
 
+    
     void ChaseStart()
     {
         isChase = true;
-        //anim.SetBool("Move", true);
+        anim.SetBool("move", true);
     }
 
     public int GetElement()
@@ -135,14 +138,27 @@ public class Monster : MonoBehaviour
     public virtual void Damaged(float damage)
     {
         hp -= damage;
+
         if (hp <= 0)
         {
             Debug.Log(gameObject.name + " 죽었습니다.!");
-            Destroy(gameObject, 4);
+            anim.SetBool("die", true);
+            Destroy(gameObject, 1.5f);
         }
         else
         {
+            StartCoroutine(KnockBack());
             Debug.Log(gameObject.name + "공격받음 : " + damage + "남은체력 : " + hp + "입니다.");
         }
+    }
+
+    IEnumerator KnockBack()
+    {
+        transform.position += player.transform.forward * 2;
+        anim.SetBool("damaged", true);
+        nav.speed = 0;
+        yield return new WaitForSeconds(2f);
+        nav.speed = 3;
+        anim.SetBool("damaged", false);
     }
 }
