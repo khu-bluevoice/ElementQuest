@@ -163,6 +163,7 @@ MonoBehaviour:
   DescriptionText: {fileID: 8528087233527698177}
   HandGestureImage: {fileID: 8079798476565325384}
   spellIcon: {fileID: 2185862673386420289}
+  spellIconGameObject: {fileID: 4698200991869278620}
 --- !u!1 &1721539558794398932
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,12 +1188,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5589104169457016463, guid: e156dd971e3074e10864de198c8d7e9d, type: 3}
   m_PrefabInstance: {fileID: 6036444335834687182}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4698200991869278620}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 290bafe76ddf2487b8f1b60049ef19df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4698200991869278620 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1366454139790950226, guid: e156dd971e3074e10864de198c8d7e9d, type: 3}
+  m_PrefabInstance: {fileID: 6036444335834687182}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7463948285046214624 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3769661663625128238, guid: e156dd971e3074e10864de198c8d7e9d, type: 3}
