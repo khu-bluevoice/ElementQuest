@@ -68,9 +68,9 @@ public class SkillScript : MonoBehaviour
             case SpellName.FIRE_LV2:
                 FireLv2();
                 break;
-            //case SpellName.FIRE_LV3:
-            //    FireLv3();
-            //    break;
+            case SpellName.FIRE_LV3:
+                FireLv3();
+                break;
             case SpellName.WATER_LV1:
                 WaterLv1();
                 break;
@@ -129,11 +129,11 @@ public class SkillScript : MonoBehaviour
     {
         casting_clone = Instantiate(Lv2_fire, playerhand.transform.position, Quaternion.LookRotation(getdirection()));
     }
-    //void FireLv3()//셰이더 오류있음
-    //{
-    //    Vector3 newposition = playerhand.transform.position + playerhand.transform.forward * 5;
-    //    Instantiate(Lv3_fire, new Vector3(newposition.x, getgroundheight(newposition), newposition.z), Quaternion.LookRotation(getdirection()));
-    //}
+    void FireLv3()//셰이더 오류있음
+    {
+        Vector3 newposition = playerhand.transform.position + getdirection() * 5;
+        Instantiate(Lv3_fire, new Vector3(newposition.x, getgroundheight(newposition), newposition.z), new Quaternion(Lv3_fire.transform.rotation.x, Quaternion.LookRotation(getdirection()).y, Lv3_fire.transform.rotation.z, Lv3_fire.transform.rotation.w));
+    }
     void WaterLv1()
     {
         Instantiate(Lv1_water, playerhand.transform.position, Quaternion.LookRotation(getdirection()));
@@ -198,10 +198,10 @@ public class SkillScript : MonoBehaviour
             FireLv2();
 
         }
-        //else if (Input.GetKeyDown(KeyCode.D))
-        //{
-        //    FireLv3();
-        //}
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            FireLv3();
+        }
         else if (Input.GetKeyDown(KeyCode.Z))
         {
             WaterLv1();

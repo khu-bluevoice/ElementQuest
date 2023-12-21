@@ -118,7 +118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19855062, guid: 08024a0f969f6a04ebcd83afbfde2200, type: 3}
       propertyPath: CollisionModule.collidesWith.m_Bits
-      value: 0
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 19880700, guid: 08024a0f969f6a04ebcd83afbfde2200, type: 3}
       propertyPath: InitialModule.startSizeY.minMaxState
