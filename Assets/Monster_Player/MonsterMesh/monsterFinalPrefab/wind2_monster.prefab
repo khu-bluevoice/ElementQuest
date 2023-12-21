@@ -1553,7 +1553,7 @@ GameObject:
   - component: {fileID: 3143223248548015314}
   m_Layer: 0
   m_Name: wind2_monster
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1643,8 +1643,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.5434628, y: 3.1494186, z: 12.475339}
-  m_Center: {x: 0.2531767, y: 1.0747086, z: 0.4703194}
+  m_Size: {x: 1.7449427, y: 2.4556134, z: 10.049134}
+  m_Center: {x: -0.14686823, y: 1.4216126, z: -0.74278295}
 --- !u!195 &1344399009525103254
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1685,10 +1685,11 @@ MonoBehaviour:
   isAttack: 0
   meleeAttack: {fileID: 0}
   monsterSkillPos: {fileID: 8785142284274929666}
-  monsterSkill: {fileID: 9052813570278170021, guid: 85bdb7be4cd087942b69a7c84c7a0d83, type: 3}
+  monsterSkill: {fileID: 114880, guid: f1a6f19a6b05d624cabbeb3bebc6c0e2, type: 3}
   target: {fileID: 0}
   hp: 100
-  MonsterElement: 0
+  monsterElement: 0
+  skillElemnt: 0
 --- !u!1 &3050037183155736892
 GameObject:
   m_ObjectHideFlags: 0

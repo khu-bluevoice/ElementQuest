@@ -883,8 +883,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.522069, y: 2.4850636, z: 1}
-  m_Center: {x: -0.017587185, y: 0.742532, z: 0}
+  m_Size: {x: 1.522069, y: 1.8428046, z: 1}
+  m_Center: {x: -0.017587185, y: 1.0636615, z: 0}
 --- !u!195 &5448943567828455412
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -899,7 +899,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -919,7 +919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5886e6f20f06d0419bf7eae268cc749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterType: 0
+  monsterType: 2
   isChase: 0
   isDamaged: 0
   isAttack: 0
@@ -928,7 +928,8 @@ MonoBehaviour:
   monsterSkill: {fileID: 0}
   target: {fileID: 0}
   hp: 200
-  MonsterElement: 0
+  monsterElement: 0
+  skillElemnt: 0
 --- !u!1 &4370006013202932726
 GameObject:
   m_ObjectHideFlags: 0

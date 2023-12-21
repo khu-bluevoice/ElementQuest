@@ -3882,8 +3882,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.5041983, z: 0.6810713}
-  m_Center: {x: 0, y: 0.92191136, z: -0.022706509}
+  m_Size: {x: 1, y: 1.3279469, z: 0.6810713}
+  m_Center: {x: 0, y: 1.0100371, z: -0.022706509}
 --- !u!195 &2672086592859110360
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3924,10 +3924,11 @@ MonoBehaviour:
   isAttack: 0
   meleeAttack: {fileID: 0}
   monsterSkillPos: {fileID: 7399513247818934044}
-  monsterSkill: {fileID: 9052813570278170021, guid: 85bdb7be4cd087942b69a7c84c7a0d83, type: 3}
+  monsterSkill: {fileID: 161946, guid: df6baa2f92ba84f438861c0a00069d27, type: 3}
   target: {fileID: 0}
   hp: 100
-  MonsterElement: 3
+  monsterElement: 0
+  skillElemnt: 0
 --- !u!1 &6713882439602867360
 GameObject:
   m_ObjectHideFlags: 0
