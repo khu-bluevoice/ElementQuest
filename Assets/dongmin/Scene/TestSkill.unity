@@ -371,11 +371,27 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1892297812}
     - target: {fileID: -6800099877926898254, guid: 4bfd1949911039a4ab39e82a53a8f362, type: 3}
+      propertyPath: isSpellActive.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6800099877926898254, guid: 4bfd1949911039a4ab39e82a53a8f362, type: 3}
       propertyPath: isSpellActive.Array.data[4]
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6800099877926898254, guid: 4bfd1949911039a4ab39e82a53a8f362, type: 3}
+      propertyPath: isSpellActive.Array.data[5]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6800099877926898254, guid: 4bfd1949911039a4ab39e82a53a8f362, type: 3}
       propertyPath: isSpellActive.Array.data[7]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6800099877926898254, guid: 4bfd1949911039a4ab39e82a53a8f362, type: 3}
+      propertyPath: isSpellActive.Array.data[8]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6800099877926898254, guid: 4bfd1949911039a4ab39e82a53a8f362, type: 3}
+      propertyPath: isSpellActive.Array.data[11]
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3000653977580812520, guid: 4bfd1949911039a4ab39e82a53a8f362, type: 3}
@@ -1165,15 +1181,22 @@ MonoBehaviour:
   Lv2_fire: {fileID: 6724437134753873753, guid: 5250e759ab1639d4a944daa238234a55, type: 3}
   Lv3_fire: {fileID: 0}
   Lv1_water: {fileID: 1851688938706289386, guid: 662020f36f066d04b8be8edba64a7018, type: 3}
-  Lv2_water: {fileID: 0}
-  Lv3_water: {fileID: 0}
+  Lv2_water: {fileID: 5827336380200978573, guid: 340b994af4b209346b2435bb682f01d8, type: 3}
+  Lv3_water: {fileID: 4857549834542564010, guid: 8777c1276925d3c4fb05ebd963e74613, type: 3}
   Lv1_earth: {fileID: 4415253223509885063, guid: 5aa916bb02070494e806efac9307a041, type: 3}
-  Lv2_earth: {fileID: 0}
-  Lv3_earth: {fileID: 0}
+  Lv2_earth: {fileID: 2827951242478599385, guid: fdb9472d994d2b84cb5d688d38575acf, type: 3}
+  Lv3_earth: {fileID: 4017485160524827707, guid: 0c4e7e3b198fb0640905058a6ef8fceb, type: 3}
   Lv1_wind: {fileID: 8669744856646437791, guid: 68272a43bf601d74bb650269cf383ccd, type: 3}
   Lv2_wind: {fileID: 5707423513221111504, guid: 684507d07ce7c364b9325b8e7e082cb3, type: 3}
-  Lv3_wind: {fileID: 0}
-  playerheight: 1.7
+  Lv3_wind: {fileID: 4386504180084998774, guid: b9c2aa668e2e9584b87ae93a9710e28f, type: 3}
+  playerheight: 1.5
+  groundheight: 0
+  enemymask:
+    serializedVersion: 2
+    m_Bits: 64
+  teleportmask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &635615115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,15 +1871,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2486170201880972029, guid: 4b2ed78da97aa86499a40541fba466de, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.3
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 2486170201880972029, guid: 4b2ed78da97aa86499a40541fba466de, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.69
+      value: 0.53
       objectReference: {fileID: 0}
     - target: {fileID: 2486170201880972029, guid: 4b2ed78da97aa86499a40541fba466de, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.51336
+      value: 2.22
       objectReference: {fileID: 0}
     - target: {fileID: 2486170201880972029, guid: 4b2ed78da97aa86499a40541fba466de, type: 3}
       propertyPath: m_LocalRotation.w

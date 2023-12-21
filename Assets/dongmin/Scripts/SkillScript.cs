@@ -34,12 +34,15 @@ public class SkillScript : MonoBehaviour
     [SerializeField]
     private GameObject Lv3_wind;
     [SerializeField]
-    private float playerheight = 1.7f;
-
+    private float playerheight = 1.5f;
+    [SerializeField]
+    private float groundheight = 0.0f;
     private GameObject casting_clone;
     private GameObject flooring_clone;
 
-    bool isfiring = false;
+    public LayerMask enemymask; // enemy로 설정될 것임.
+    public LayerMask teleportmask;
+    
     void getgroundposition(Vector3 groundpos)
     {
         // TO-DO
@@ -53,23 +56,64 @@ public class SkillScript : MonoBehaviour
             case SpellName.EARTH_LV1:
                 EarthLv1();
                 break;
+            case SpellName.EARTH_LV2:
+                EarthLv2();
+                break;
+            case SpellName.EARTH_LV3:
+                EarthLv3();
+                break;
             case SpellName.FIRE_LV1:
                 FireLv1();
-                break;
-            case SpellName.WATER_LV1:
-                WaterLv1();
-                break;
-            case SpellName.WIND_LV1:
-                WindLv1();
                 break;
             case SpellName.FIRE_LV2:
                 FireLv2();
                 break;
+            //case SpellName.FIRE_LV3:
+            //    FireLv3();
+            //    break;
+            case SpellName.WATER_LV1:
+                WaterLv1();
+                break;
+            case SpellName.WATER_LV2:
+                WaterLv2();
+                break;
+            case SpellName.WATER_LV3:
+                WaterLv3();
+                break;
+            case SpellName.WIND_LV1:
+                WindLv1();
+                break;
             case SpellName.WIND_LV2:
                 WindLv2();
                 break;
+            case SpellName.WIND_LV3:
+                WindLv3();
+                break;
         }
     }
+    Vector3 getdirection()
+    {
+        Vector3 forwardmaxpos = Camera.main.transform.forward * 1000f + Camera.main.transform.position;
+        Vector3 direction = forwardmaxpos - playerhand.transform.position;
+        direction.Normalize();
+        return direction;
+    }
+    float getgroundheight(Vector3 newposition)
+    {
+        LayerMask combinedIgnoredMask = enemymask | teleportmask;
+        newposition.y += 5;
+        RaycastHit hit;
+        if (Physics.Raycast(newposition, Vector3.down, out hit, Mathf.Infinity, ~combinedIgnoredMask))
+        {
+            groundheight = hit.point.y;
+        }
+        else
+        {
+            groundheight = playerhand.transform.position.y - playerheight;
+        }
+        return groundheight;
+    }
+
     void FireLv1()
     {
         //Quaternion currentRotation = playerhand.transform.rotation; 
@@ -83,70 +127,51 @@ public class SkillScript : MonoBehaviour
     }
     void FireLv2()
     {
-        Vector3 forwardmaxpos = Camera.main.transform.forward * 1000f + Camera.main.transform.position;
-        Vector3 direction = forwardmaxpos - playerhand.transform.position;
-        direction.Normalize();
-
-        casting_clone = Instantiate(Lv2_fire, playerhand.transform.position, Quaternion.LookRotation(direction));
+        casting_clone = Instantiate(Lv2_fire, playerhand.transform.position, Quaternion.LookRotation(getdirection()));
     }
-    void FireLv3()
-    {
-        Vector3 newposition = playerhand.transform.position + playerhand.transform.forward * 5;
-        Instantiate(Lv3_fire, new Vector3(newposition.x, newposition.y - playerheight, newposition.z), playerhand.transform.rotation);
-    }
+    //void FireLv3()//셰이더 오류있음
+    //{
+    //    Vector3 newposition = playerhand.transform.position + playerhand.transform.forward * 5;
+    //    Instantiate(Lv3_fire, new Vector3(newposition.x, getgroundheight(newposition), newposition.z), Quaternion.LookRotation(getdirection()));
+    //}
     void WaterLv1()
     {
-        Vector3 forwardmaxpos = Camera.main.transform.forward * 1000f + Camera.main.transform.position;
-        Vector3 direction = forwardmaxpos - playerhand.transform.position;
-        direction.Normalize();
-
-        Instantiate(Lv1_water, playerhand.transform.position, Quaternion.LookRotation(direction));
+        Instantiate(Lv1_water, playerhand.transform.position, Quaternion.LookRotation(getdirection()));
     }
     void WaterLv2()
     {
-        Instantiate(Lv2_water, new Vector3(playerhand.transform.position.x, playerhand.transform.position.y - playerheight, playerhand.transform.position.z), playerhand.transform.rotation);
+        Instantiate(Lv2_water, new Vector3(playerhand.transform.position.x, playerhand.transform.position.y - playerheight, playerhand.transform.position.z), Quaternion.LookRotation(getdirection()));
     }
     void WaterLv3()
     {
-        Vector3 newposition = playerhand.transform.position + playerhand.transform.forward * 5;
-        Instantiate(Lv3_water, new Vector3(newposition.x, newposition.y - playerheight, newposition.z), Lv3_water.transform.rotation);
+        Vector3 newposition = playerhand.transform.position + getdirection() * 5;
+        Instantiate(Lv3_water, new Vector3(newposition.x, getgroundheight(newposition), newposition.z), Lv3_water.transform.rotation);
     }
     void EarthLv1()
     {
-        Vector3 forwardmaxpos = Camera.main.transform.forward * 1000f + Camera.main.transform.position;
-        Vector3 direction = forwardmaxpos - playerhand.transform.position;
-        direction.Normalize();
-
-        Instantiate(Lv1_earth, playerhand.transform.position, Quaternion.LookRotation(direction));
+        Instantiate(Lv1_earth, playerhand.transform.position, Quaternion.LookRotation(getdirection()));
     }
     void EarthLv2()
     {
-        Vector3 newposition = playerhand.transform.position + playerhand.transform.forward * 5;
-        Instantiate(Lv2_earth, new Vector3(newposition.x, newposition.y - playerheight, newposition.z), Lv3_water.transform.rotation);
+        Vector3 newposition = playerhand.transform.position + getdirection() * 5;
+        Instantiate(Lv2_earth, new Vector3(newposition.x, getgroundheight(newposition), newposition.z), Lv2_earth.transform.rotation);
     }
-    void EarthLv3()
+    void EarthLv3() 
     {
-        Instantiate(Lv3_earth, new Vector3(playerhand.transform.position.x, playerhand.transform.position.y - playerheight, playerhand.transform.position.z), playerhand.transform.rotation);
+        Instantiate(Lv3_earth, new Vector3(playerhand.transform.position.x, playerhand.transform.position.y - playerheight, playerhand.transform.position.z), Quaternion.LookRotation(getdirection()));
     }
     void WindLv1()
     {
-        Vector3 forwardmaxpos = Camera.main.transform.forward * 1000f + Camera.main.transform.position;
-        Vector3 direction = forwardmaxpos - playerhand.transform.position;
-        direction.Normalize();
-
-        Instantiate(Lv1_wind, playerhand.transform.position, Quaternion.LookRotation(direction));
+        Instantiate(Lv1_wind, playerhand.transform.position, Quaternion.LookRotation(getdirection()));
     }
     void WindLv2()
     {
-        Vector3 forwardmaxpos = Camera.main.transform.forward * 1000f + Camera.main.transform.position;
-        Vector3 direction = forwardmaxpos - playerhand.transform.position;
-        direction.Normalize();
-        Instantiate(Lv2_wind, playerhand.transform.position, Quaternion.LookRotation(direction));
+        Instantiate(Lv2_wind, playerhand.transform.position, Quaternion.LookRotation(getdirection()));
     }
     void WindLv3()
     {
-        Vector3 newposition = playerhand.transform.position + playerhand.transform.forward * 5;
-        Instantiate(Lv3_wind, new Vector3(newposition.x, newposition.y - playerheight, newposition.z), Lv3_wind.transform.rotation);
+        Vector3 newposition = playerhand.transform.position + getdirection() * 5;
+        Instantiate(Lv3_wind, new Vector3(newposition.x, getgroundheight(newposition), newposition.z), Lv3_wind.transform.rotation);
     }
     // Start is called before the first frame update
     void Start()
@@ -158,11 +183,8 @@ public class SkillScript : MonoBehaviour
         // 화염방사기 유지하는 거여서 없애면 안댐!
         if (casting_clone)
         {
-            Vector3 forwardmaxpos = Camera.main.transform.forward * 1000f + Camera.main.transform.position;
-            Vector3 direction = forwardmaxpos - playerhand.transform.position;
-            direction.Normalize();
             casting_clone.transform.position = playerhand.transform.position;
-            casting_clone.transform.rotation = Quaternion.LookRotation(direction);
+            casting_clone.transform.rotation = Quaternion.LookRotation(getdirection());
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
@@ -173,52 +195,48 @@ public class SkillScript : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            casting_clone = Instantiate(Lv2_fire, playerhand.transform.position, playerhand.transform.rotation);
+            FireLv2();
 
         }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            Vector3 newposition = playerhand.transform.position + playerhand.transform.forward * 5;
-            Instantiate(Lv3_fire, new Vector3(newposition.x, newposition.y - playerheight, newposition.z), playerhand.transform.rotation);
-        }
+        //else if (Input.GetKeyDown(KeyCode.D))
+        //{
+        //    FireLv3();
+        //}
         else if (Input.GetKeyDown(KeyCode.Z))
         {
-            Instantiate(Lv1_water, playerhand.transform.position, playerhand.transform.rotation);
+            WaterLv1();
         }
         else if (Input.GetKeyDown(KeyCode.X))
         {
-            Instantiate(Lv2_water, new Vector3(playerhand.transform.position.x, playerhand.transform.position.y - playerheight, playerhand.transform.position.z), playerhand.transform.rotation);
+            WaterLv2();
         }
         else if (Input.GetKeyDown(KeyCode.C))
         {
-            Vector3 newposition = playerhand.transform.position + playerhand.transform.forward * 5;
-            Instantiate(Lv3_water, new Vector3(newposition.x, newposition.y - playerheight, newposition.z), Lv3_water.transform.rotation);
+            WaterLv3();
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
-            Instantiate(Lv1_earth, playerhand.transform.position, playerhand.transform.rotation);
+            EarthLv1();
         }
         else if (Input.GetKeyDown(KeyCode.W))
         {
-            Vector3 newposition = playerhand.transform.position + playerhand.transform.forward * 5;
-            Instantiate(Lv2_earth, new Vector3(newposition.x, newposition.y - playerheight, newposition.z), Lv3_water.transform.rotation);
+            EarthLv2();
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
-            Instantiate(Lv3_earth, new Vector3(playerhand.transform.position.x, playerhand.transform.position.y - playerheight, playerhand.transform.position.z), playerhand.transform.rotation);
+            EarthLv3();
         }
-        //else if (Input.GetKeyDown(KeyCode.Alpha1))
-        //{
-        //    Instantiate(Lv1_wind, playerhand.transform.position, playerhand.transform.rotation);
-        //}
-        //else if (Input.GetKeyDown(KeyCode.Alpha2))
-        //{
-        //    Instantiate(Lv2_wind, playerhand.transform.position, playerhand.transform.rotation);
-        //}
-        //else if (Input.GetKeyDown(KeyCode.Alpha3))
-        //{
-        //    Vector3 newposition = playerhand.transform.position + playerhand.transform.forward * 5;
-        //    Instantiate(Lv3_wind, new Vector3(newposition.x, newposition.y - playerheight, newposition.z), Lv3_wind.transform.rotation);
-        //}
+        else if (Input.GetKeyDown(KeyCode.J))
+        {
+            WindLv1();
+        }
+        else if (Input.GetKeyDown(KeyCode.K))
+        {
+            WindLv2();
+        }
+        else if (Input.GetKeyDown(KeyCode.L))
+        {
+            WindLv3();
+        }
     }
 }
