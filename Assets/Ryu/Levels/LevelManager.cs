@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public ElementQuestGameManager GameManager;
     public int MonsterCount;
     private bool Cleared;
     public GameObject[] LevelMoveTeleportPos;
@@ -13,27 +12,25 @@ public class LevelManager : MonoBehaviour
 
     void Awake()
     {
-        GameManager = GameObject.FindFirstObjectByType<ElementQuestGameManager>();
-        Debug.Log("1");
+        
+    }
 
-        if(!GameManager.ClearMap.ContainsKey(SceneManager.GetActiveScene().name))
+    void Start()
+    {
+        if (!ElementQuestGameManager.instance.ClearMap.ContainsKey(SceneManager.GetActiveScene().name))
         {
-            GameManager.ClearMap.Add(SceneManager.GetActiveScene().name, false);
+            ElementQuestGameManager.instance.ClearMap.Add(SceneManager.GetActiveScene().name, false);
         }
 
-        if(!GameManager.ClearMap[SceneManager.GetActiveScene().name])
+        if (!ElementQuestGameManager.instance.ClearMap[SceneManager.GetActiveScene().name])
         {
             GameObject EnemyObjects = GameObject.FindGameObjectWithTag("Enemy");
-            for(int i = 0; i < EnemyObjects.transform.childCount; i++)
+            for (int i = 0; i < EnemyObjects.transform.childCount; i++)
             {
                 EnemyObjects.transform.GetChild(i).gameObject.SetActive(true);
                 MonsterCount++;
             }
         }
-    }
-
-    void Start()
-    {
         Cleared = false;
     }
 
@@ -45,7 +42,7 @@ public class LevelManager : MonoBehaviour
             if(MonsterCount == 0)
             {
                 Cleared = true;
-                GameManager.ClearMap[SceneManager.GetActiveScene().name] = true;
+                ElementQuestGameManager.instance.ClearMap[SceneManager.GetActiveScene().name] = true;
                 GameObject[] EndObjects = GameObject.FindGameObjectsWithTag("Finish");
                 foreach(GameObject EndObject in EndObjects)
                 {
