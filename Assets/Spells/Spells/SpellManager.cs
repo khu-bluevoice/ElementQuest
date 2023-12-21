@@ -35,6 +35,8 @@ public class SpellManager : MonoBehaviour
     private Spell selectedSpell;
     private List<Spell> selectableSpells = new List<Spell>();
 
+    private float delay = 0;
+
     void Start()
     {
         selectedSpell = null;
@@ -45,6 +47,8 @@ public class SpellManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        delay += Time.deltaTime;
+
         // 회전 회오리
         this.transform.eulerAngles = new Vector3(0, MainCamera.eulerAngles.y, 0);
         this.transform.localPosition = MainCamera.localPosition - new Vector3(0, 0.3f, 0);
@@ -89,6 +93,10 @@ public class SpellManager : MonoBehaviour
     // 동작을 인식
     public void HandleSpellDetected(SpellName detectedSpell)
     {
+        // n초에 한번씩 인식 가능
+        if (delay < 1f) return;
+        else delay = 0;
+
         if (detectedSpell == SpellName.TELEPORT)
         {
             TeleportManager.SendMessage("Teleport");
@@ -115,7 +123,7 @@ public class SpellManager : MonoBehaviour
             int index = spellNames.IndexOf(detectedSpell);
             if (index != -1)
             {
-                if (isSpellActive[index] && selectableSpells.IndexOf(spells[index]) != -1)
+                if (ElementQuestGameManager.instance.isSpellActive[index] && selectableSpells.IndexOf(spells[index]) != -1)
                 {
                     // 스킬 선택
                     selectedSpell = spells[index];
