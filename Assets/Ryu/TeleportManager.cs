@@ -26,7 +26,7 @@ public class TeleportManager : MonoBehaviour
             Debug.Log("Hit TeleportPoint " + hit.collider.gameObject.name);
             Debug.DrawRay(CenterEye.transform.position, CenterEye.transform.forward * hit.distance, Color.red);
 
-            hit.collider.gameObject.SendMessage("OnTriggerEnter", GetComponent<Collider>());
+            hit.collider.gameObject.SendMessage("_OnTriggerEnter");
 
             Debug.Log(hit.collider.gameObject.name);
         }
@@ -34,7 +34,7 @@ public class TeleportManager : MonoBehaviour
         {
             if(HitColliderSave != null)
             {
-                HitColliderSave.SendMessage("OnTriggerExit", GetComponent<Collider>());
+                HitColliderSave.SendMessage("_OnTriggerExit");
             }
             Debug.DrawRay(CenterEye.transform.position, CenterEye.transform.forward * 1000f, Color.red);
         }    
