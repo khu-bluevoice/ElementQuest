@@ -8,12 +8,14 @@ public class Monster : MonoBehaviour
     public enum Type { Short, Long, Boss };
 
     public Type monsterType;
+
     public bool isChase;
     public bool isDamaged;
     public bool isAttack;
     public BoxCollider meleeAttack;
-    public GameObject monsterSkill;
+    public GameObject monsterSkillPos;
 
+    public GameObject monsterSkill;
 
     protected GameObject player;
 
@@ -72,12 +74,12 @@ public class Monster : MonoBehaviour
         switch (monsterType)
         {
             case Type.Short:
-                targetRadius = 0.5f;
-                targetRange = 1f;
+                targetRadius = 0.7f;
+                targetRange = 1.2f;
                 break;
 
             case Type.Long:
-                targetRadius = 1f;
+                targetRadius = 3f;
                 targetRange = 5f;
                 break;
         }
@@ -85,7 +87,7 @@ public class Monster : MonoBehaviour
         RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, targetRadius, transform.forward, targetRange, LayerMask.GetMask("Player"));
 
         if (rayHits.Length > 0 && !isAttack)
-        {
+        {           
             StartCoroutine(Attack());
         }
     }
@@ -94,7 +96,7 @@ public class Monster : MonoBehaviour
     {
         isChase = false;
         isAttack = true;
-        //anim.SetBool("Attack", true);
+        anim.SetBool("attack", true);
 
         switch (monsterType)
         {
@@ -109,9 +111,9 @@ public class Monster : MonoBehaviour
                 break;
             case Type.Long:
                 yield return new WaitForSeconds(1f);
-                GameObject instantBullet = Instantiate(monsterSkill, transform.position, transform.rotation);
-                Rigidbody rigidSkill = instantBullet.GetComponent<Rigidbody>();
-                rigidSkill.velocity = transform.forward * 20;
+                GameObject instantBullet = Instantiate(monsterSkill, monsterSkillPos.transform.position, monsterSkillPos.transform.rotation);
+                Rigidbody rigidSkill = instantBullet.GetComponent<Rigidbody>();                  
+                rigidSkill.velocity = transform.forward * 50;
 
                 yield return new WaitForSeconds(2f);
                 break;
@@ -119,23 +121,24 @@ public class Monster : MonoBehaviour
 
         isChase = true;
         isAttack = false;
-        //anim.SetBool("Attack", false);
+        anim.SetBool("attack", false);
     }
 
+    
     void ChaseStart()
     {
         isChase = true;
-        //anim.SetBool("Move", true);
+        anim.SetBool("move", true);
     }
 
     public Element GetElement()
     {
         return monsterElement;
     }
-    // ºÒ¼Ó¼º ¸ó½ºÅÍ´Â ¹° ½ºÅ³¿¡ ¾àÇÏ´Ù.
-    // ¹°¼Ó¼º ¸ó½ºÅÍ´Â ¶¥ ½ºÅ³¿¡ ¾àÇÏ´Ù.
-    // ¶¥¼Ó¼º ¸ó½ºÅÍ´Â ¹Ù¶÷ ½ºÅ³¿¡ ¾àÇÏ´Ù.
-    // ¹Ù¶÷¼Ó¼º ¸ó½ºÅÍ´Â ºÒ ½ºÅ³¿¡ ¾àÇÏ´Ù.
+    // ë¶ˆì†ì„± ëª¬ìŠ¤í„°ëŠ” ë¬¼ ìŠ¤í‚¬ì— ì•½í•˜ë‹¤.
+    // ë¬¼ì†ì„± ëª¬ìŠ¤í„°ëŠ” ë•… ìŠ¤í‚¬ì— ì•½í•˜ë‹¤.
+    // ë•…ì†ì„± ëª¬ìŠ¤í„°ëŠ” ë°”ëŒ ìŠ¤í‚¬ì— ì•½í•˜ë‹¤.
+    // ë°”ëŒì†ì„± ëª¬ìŠ¤í„°ëŠ” ë¶ˆ ìŠ¤í‚¬ì— ì•½í•˜ë‹¤.
     public virtual void Damaged(Element skillElement, float damage)
     {
         if(monsterElement == Element.Fire)
@@ -184,12 +187,24 @@ public class Monster : MonoBehaviour
         }
         if (hp <= 0)
         {
-            Debug.Log(gameObject.name + " Á×¾ú½À´Ï´Ù.!");
-            Destroy(gameObject, 4);
+            Debug.Log(gameObject.name + " ì£½ì—ˆìŠµë‹ˆë‹¤.!");
+            anim.SetBool("die", true);
+            Destroy(gameObject, 1.5f);
         }
         else
         {
-            Debug.Log(gameObject.name + "°ø°İ¹ŞÀ½ : " + damage + "³²ÀºÃ¼·Â : " + hp + "ÀÔ´Ï´Ù.");
+            StartCoroutine(KnockBack());
+            Debug.Log(gameObject.name + "ê³µê²©ë°›ìŒ : " + damage + "ë‚¨ì€ì²´ë ¥ : " + hp + "ì…ë‹ˆë‹¤.");
         }
+    }
+
+    IEnumerator KnockBack()
+    {
+        transform.position += player.transform.forward * 2;
+        anim.SetBool("damaged", true);
+        nav.speed = 0;
+        yield return new WaitForSeconds(2f);
+        nav.speed = 3;
+        anim.SetBool("damaged", false);
     }
 }
