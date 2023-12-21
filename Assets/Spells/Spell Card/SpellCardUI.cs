@@ -55,6 +55,9 @@ public class SpellCardUI : MonoBehaviour
     [SerializeField]
     SpellIcon spellIcon;
 
+    [SerializeField]
+    GameObject spellIconGameObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,7 +77,10 @@ public class SpellCardUI : MonoBehaviour
             CardRibbon.sprite = item.cardRibbonSprite;
             // update spell icon
             HandGestureImage.sprite = spell.handGesture;
-            spellIcon.image.sprite = spell.spellIcon;
+            if (spell.spellIcon)
+                spellIcon.image.sprite = spell.spellIcon;
+            else
+                spellIconGameObject.SetActive(false);
         }
         if (this.isFlipped)
         {
@@ -123,7 +129,7 @@ public class SpellCardUI : MonoBehaviour
             //transform.localRotation = Quaternion.LookRotation(transform.up).;
             float degree = Time.deltaTime / flippingTime * 180;
             totalRotated += degree;
-            
+
             transform.Rotate(0, degree, 0);
 
             t += Time.deltaTime;

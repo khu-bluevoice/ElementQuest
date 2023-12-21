@@ -365,11 +365,19 @@ PrefabInstance:
     - target: {fileID: -6800099877926898254, guid: 4bfd1949911039a4ab39e82a53a8f362, type: 3}
       propertyPath: SkillManager
       value: 
-      objectReference: {fileID: 873142134}
+      objectReference: {fileID: 585424993}
     - target: {fileID: -6800099877926898254, guid: 4bfd1949911039a4ab39e82a53a8f362, type: 3}
       propertyPath: TeleportManager
       value: 
       objectReference: {fileID: 1892297812}
+    - target: {fileID: -6800099877926898254, guid: 4bfd1949911039a4ab39e82a53a8f362, type: 3}
+      propertyPath: isSpellActive.Array.data[4]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6800099877926898254, guid: 4bfd1949911039a4ab39e82a53a8f362, type: 3}
+      propertyPath: isSpellActive.Array.data[7]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3000653977580812520, guid: 4bfd1949911039a4ab39e82a53a8f362, type: 3}
       propertyPath: m_Camera
       value: 
@@ -819,6 +827,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 635615116}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &423782853 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3300481182575282762, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
+  m_PrefabInstance: {fileID: 873142126}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &440074429
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,6 +1005,10 @@ PrefabInstance:
       propertyPath: _trackingToWorldTransformer
       value: 
       objectReference: {fileID: 2000732380}
+    - target: {fileID: 8782831107812858714, guid: fbfc588a949bb1a42b20e5bddc4cf8cf, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9193267195763093205, guid: fbfc588a949bb1a42b20e5bddc4cf8cf, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1126,6 +1143,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06be0614cc52a45c995c86e8f4f6565f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &585424990 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3300481184178953773, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
+  m_PrefabInstance: {fileID: 873142126}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &585424993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585424990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403b9e7567ff69d42b23a0f1beb7859a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerhand: {fileID: 423782853}
+  Lv1_fire: {fileID: 514390356015749913, guid: 7a6f0970d8b682747ab96a7b96503288, type: 3}
+  Lv2_fire: {fileID: 6724437134753873753, guid: 5250e759ab1639d4a944daa238234a55, type: 3}
+  Lv3_fire: {fileID: 0}
+  Lv1_water: {fileID: 1851688938706289386, guid: 662020f36f066d04b8be8edba64a7018, type: 3}
+  Lv2_water: {fileID: 0}
+  Lv3_water: {fileID: 0}
+  Lv1_earth: {fileID: 4415253223509885063, guid: 5aa916bb02070494e806efac9307a041, type: 3}
+  Lv2_earth: {fileID: 0}
+  Lv3_earth: {fileID: 0}
+  Lv1_wind: {fileID: 8669744856646437791, guid: 68272a43bf601d74bb650269cf383ccd, type: 3}
+  Lv2_wind: {fileID: 5707423513221111504, guid: 684507d07ce7c364b9325b8e7e082cb3, type: 3}
+  Lv3_wind: {fileID: 0}
+  playerheight: 1.7
 --- !u!1 &635615115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,6 +1295,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MagicEnd
       objectReference: {fileID: 0}
+    - target: {fileID: 6906882456560643797, guid: c8afc9f6843954c6394b369e8cc8f445, type: 3}
+      propertyPath: _shapes.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c2253e876d14fa4f923781b4b2d4e0f, type: 2}
     - target: {fileID: 6906882456560643797, guid: c8afc9f6843954c6394b369e8cc8f445, type: 3}
       propertyPath: _fingerFeatureStateProvider
       value: 
@@ -1498,6 +1550,46 @@ PrefabInstance:
       propertyPath: _trackingToWorldTransformer
       value: 
       objectReference: {fileID: 2000732380}
+    - target: {fileID: 2644993875983472182, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
+      propertyPath: Lv1_wind
+      value: 
+      objectReference: {fileID: 8669744856646437791, guid: 68272a43bf601d74bb650269cf383ccd, type: 3}
+    - target: {fileID: 2644993875983472182, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
+      propertyPath: Lv2_fire
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644993875983472182, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
+      propertyPath: Lv3_fire
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644993875983472182, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
+      propertyPath: Lv1_earth
+      value: 
+      objectReference: {fileID: 4415253223509885063, guid: 5aa916bb02070494e806efac9307a041, type: 3}
+    - target: {fileID: 2644993875983472182, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
+      propertyPath: Lv1_water
+      value: 
+      objectReference: {fileID: 1851688938706289386, guid: 662020f36f066d04b8be8edba64a7018, type: 3}
+    - target: {fileID: 2644993875983472182, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
+      propertyPath: Lv2_earth
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644993875983472182, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
+      propertyPath: Lv2_water
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644993875983472182, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
+      propertyPath: Lv3_earth
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644993875983472182, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
+      propertyPath: Lv3_water
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644993875983472182, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4392756070075192809, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
       propertyPath: _interactors.Array.size
       value: 1
@@ -1590,7 +1682,8 @@ PrefabInstance:
       propertyPath: _trackingToWorldTransformer
       value: 
       objectReference: {fileID: 2000732380}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2644993875983472182, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5545149144574972019, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
@@ -1606,6 +1699,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1367575963433742180, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 873142137}
+    - targetCorrespondingSourceObject: {fileID: 3300481184178953773, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 585424993}
     - targetCorrespondingSourceObject: {fileID: 4104369205668538801, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 873142136}
@@ -1660,17 +1756,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1367575963433742180, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
   m_PrefabInstance: {fileID: 873142126}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &873142134 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2644993875983472182, guid: ea16c3c8c1688234fa81a4f39339bf1b, type: 3}
-  m_PrefabInstance: {fileID: 873142126}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 403b9e7567ff69d42b23a0f1beb7859a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &873142135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2531,6 +2616,10 @@ PrefabInstance:
     - target: {fileID: 4386520648219710231, guid: 63cd0cd64c0f64cbfafc5bcdfc29b925, type: 3}
       propertyPath: m_Name
       value: MagicStart
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570599601587743397, guid: 63cd0cd64c0f64cbfafc5bcdfc29b925, type: 3}
+      propertyPath: _shapes.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7570599601587743397, guid: 63cd0cd64c0f64cbfafc5bcdfc29b925, type: 3}
       propertyPath: _fingerFeatureStateProvider
