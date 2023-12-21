@@ -29,6 +29,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Ryu/Levels/GameClear.unity
     guid: adfcda6405b73b14cb0e7e5be063bd72
+  - enabled: 0
+    path: Assets/Test/Scene/MainStage.unity
+    guid: 5515a86994d4c9f44bb888a816a33c6c
+  - enabled: 0
+    path: Assets/Oculus/Interaction/Samples/Scenes/Examples/PoseExamples.unity
+    guid: 4fe358b21fe17764db89a9ab9f202327
+  - enabled: 1
+    path: Assets/dongmin/Scene/TestSkill.unity
+    guid: 6707edb96bbcd3a4d9e39dc3ce8fd26d
+  - enabled: 0
+    path: Assets/dongmin/Scene/MainStage 1.unity
+    guid: 92facf14e5ab3ed41adfa17abd0496e1
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bf9cfcd07310f994793a4398bfd79442, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 025abfc92d36f404aa4fce0adfca31c3, type: 2}

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Spell Icon
   - Teleport
   - Spell Icon
   - Box
@@ -15,8 +16,8 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
-  - 
+  - Enemy
+  - Particle
   - Teleport
   - Box
   - 
