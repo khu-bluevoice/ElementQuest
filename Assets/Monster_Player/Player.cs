@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -20,6 +21,11 @@ public class Player : MonoBehaviour
             PlayerHP -= 10;
             StartCoroutine(PlayerDamaged());
             Debug.LogWarning(PlayerHP);
+
+            if(PlayerHP <= 0)
+            {
+                SceneManager.LoadScene("GameClearScene");
+            }
             //PlayerDamaged(10);
         }
     }
