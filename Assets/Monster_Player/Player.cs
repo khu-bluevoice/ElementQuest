@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
          
             PlayerHP -= 10;
             StartCoroutine(PlayerDamaged());
-            Debug.Log(PlayerHP);
+            Debug.LogWarning(PlayerHP);
             //PlayerDamaged(10);
         }
     }

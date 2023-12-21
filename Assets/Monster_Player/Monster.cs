@@ -82,6 +82,10 @@ public class Monster : MonoBehaviour
                 targetRadius = 3f;
                 targetRange = 5f;
                 break;
+            case Type.Boss:
+                targetRadius = 0.7f;
+                targetRange = 1f;
+                break;
         }
 
         RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, targetRadius, transform.forward, targetRange, LayerMask.GetMask("Player"));
@@ -100,6 +104,7 @@ public class Monster : MonoBehaviour
 
         switch (monsterType)
         {
+            case Type.Boss:
             case Type.Short:
                 yield return new WaitForSeconds(0.2f);
                 meleeAttack.enabled = true;

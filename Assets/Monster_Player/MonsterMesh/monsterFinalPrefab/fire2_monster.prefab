@@ -667,8 +667,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.105288, y: 1.7673639, z: 1}
-  m_Center: {x: -0.020565271, y: 1.1747795, z: 0}
+  m_Size: {x: 1.4128814, y: 1.7673638, z: 1}
+  m_Center: {x: -0.02524829, y: 1.1747795, z: 0}
 --- !u!195 &187776368909130960
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -683,7 +683,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -703,7 +703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5886e6f20f06d0419bf7eae268cc749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterType: 0
+  monsterType: 2
   isChase: 0
   isDamaged: 0
   isAttack: 0
@@ -1275,8 +1275,8 @@ Transform:
   m_GameObject: {fileID: 5019923277755528622}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.15999985, y: 1.0280002, z: 0.5796294}
-  m_LocalScale: {x: 1.7073365, y: 1, z: 1.0421486}
+  m_LocalPosition: {x: -0.15999985, y: 1.071, z: 0.5796294}
+  m_LocalScale: {x: 0.8847589, y: 1, z: 1.0421486}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2144127165328242717}
