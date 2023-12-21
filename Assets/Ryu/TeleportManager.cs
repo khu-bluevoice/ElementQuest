@@ -8,6 +8,9 @@ public class TeleportManager : MonoBehaviour
     public GameObject GameCharacter;
     public GameObject CenterEye;
 
+    public float teleportDelay = 1f;
+    private float delayCounter = 0;
+
     private RaycastHit hit;
     private GameObject HitColliderSave;
 
@@ -24,6 +27,8 @@ public class TeleportManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        delayCounter += Time.deltaTime;
+
         if (Physics.Raycast(CenterEye.transform.position, CenterEye.transform.forward, out hit, Mathf.Infinity, layerMask))
         {
             HitColliderSave = hit.collider.gameObject;
@@ -36,23 +41,28 @@ public class TeleportManager : MonoBehaviour
         }
         else
         {
-            if(HitColliderSave != null)
+            if (HitColliderSave != null)
             {
                 HitColliderSave.SendMessage("_OnTriggerExit");
             }
             Debug.DrawRay(CenterEye.transform.position, CenterEye.transform.forward * 1000f, Color.red);
-        }    
+        }
     }
 
     void Teleport()
     {
+        if (delayCounter < teleportDelay) return;
+        else delayCounter = 0;
+
         if (Physics.Raycast(CenterEye.transform.position, CenterEye.transform.forward, out hit, Mathf.Infinity, layerMask))
         {
-            GameCharacter.transform.position = hit.collider.gameObject.transform.position;
+            // Teleport
+            //GameCharacter.transform.position = hit.collider.gameObject.transform.position;
+            StartCoroutine(_SmoothTeleport(GameCharacter.transform.position, hit.collider.gameObject.transform.position));
         }
         else
         {
-            if(Physics.Raycast(CenterEye.transform.position, CenterEye.transform.forward, out hit, 17f, boxlayerMask))
+            if (Physics.Raycast(CenterEye.transform.position, CenterEye.transform.forward, out hit, 17f, boxlayerMask))
             {
                 int cardNum = hit.transform.GetComponent<BoxScript>().CardNum;
                 if (ElementQuestGameManager.instance.isSpellActive[cardNum] == false)
@@ -70,6 +80,24 @@ public class TeleportManager : MonoBehaviour
             }
         }
     }
+
+    IEnumerator _SmoothTeleport(Vector3 original, Vector3 destination)
+    {
+        float animtionTime = 10f;
+        float t = 0;
+        while (t < 1f)
+        {
+            t += Time.deltaTime * animtionTime;
+            float x = Mathf.Lerp(original.x, destination.x, t);
+            float y = Mathf.Lerp(original.y, destination.y, t);
+            float z = Mathf.Lerp(original.z, destination.z, t);
+
+            GameCharacter.transform.position = new Vector3(x, y, z);
+            yield return null;
+        }
         
+        yield return 0;
+    }
+
 
 }
