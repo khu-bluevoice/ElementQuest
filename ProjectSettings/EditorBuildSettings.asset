@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Test/Scene/MainStage.unity
+    guid: 5515a86994d4c9f44bb888a816a33c6c
   - enabled: 1
     path: Assets/Ryu/Levels/CenterHall.unity
-    guid: 5515a86994d4c9f44bb888a816a33c6c
+    guid: a802b7fef302af5449bb39dae40be125
   - enabled: 1
     path: Assets/Ryu/Levels/LongHall.unity
     guid: 7c1a19cf7c20a1746b42911d6e0553f4

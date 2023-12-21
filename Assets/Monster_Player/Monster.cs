@@ -135,10 +135,10 @@ public class Monster : MonoBehaviour
     {
         return monsterElement;
     }
-    // 불속성 몬스터는 물 스킬에 약하다.
-    // 물속성 몬스터는 땅 스킬에 약하다.
-    // 땅속성 몬스터는 바람 스킬에 약하다.
-    // 바람속성 몬스터는 불 스킬에 약하다.
+    // 불속??몬스?�는 �??�킬???�하??
+    // 물속??몬스?�는 ???�킬???�하??
+    // ?�속??몬스?�는 바람 ?�킬???�하??
+    // 바람?�성 몬스?�는 �??�킬???�하??
     public virtual void Damaged(Element skillElement, float damage)
     {
         if(monsterElement == Element.Fire)
@@ -187,14 +187,14 @@ public class Monster : MonoBehaviour
         }
         if (hp <= 0)
         {
-            Debug.Log(gameObject.name + " 죽었습니다.!");
+            Debug.Log(gameObject.name + " 죽었?�니??!");
             anim.SetBool("die", true);
             Destroy(gameObject, 1.5f);
         }
         else
         {
             StartCoroutine(KnockBack());
-            Debug.Log(gameObject.name + "공격받음 : " + damage + "남은체력 : " + hp + "입니다.");
+            Debug.Log(gameObject.name + "공격받음 : " + damage + "?��?체력 : " + hp + "?�니??");
         }
     }
 

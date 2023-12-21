@@ -667,8 +667,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.105288, y: 2.5584612, z: 1}
-  m_Center: {x: -0.020565271, y: 0.77923083, z: 0}
+  m_Size: {x: 2.105288, y: 1.7673639, z: 1}
+  m_Center: {x: -0.020565271, y: 1.1747795, z: 0}
 --- !u!195 &187776368909130960
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -712,7 +712,8 @@ MonoBehaviour:
   monsterSkill: {fileID: 0}
   target: {fileID: 0}
   hp: 200
-  MonsterElement: 1
+  monsterElement: 0
+  skillElemnt: 0
 --- !u!1 &3004816954218135888
 GameObject:
   m_ObjectHideFlags: 0
