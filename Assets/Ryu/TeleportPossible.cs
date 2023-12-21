@@ -26,6 +26,7 @@ public class TeleportPossible : MonoBehaviour
 
     void _OnTriggerEnter()
     {
+        Debug.Log("haha");
         WhiteObj.SetActive(false);
         RedObj.SetActive(true);
         IsSetWhite = false;
@@ -33,11 +34,9 @@ public class TeleportPossible : MonoBehaviour
 
     void _OnTriggerExit()
     {
-        if(!IsSetWhite)
-        {
-            RedObj.SetActive(false);
-            WhiteObj.SetActive(true);
-            IsSetWhite = true;
-        }
+        Debug.Log("dadada");
+        RedObj.SetActive(false);
+        WhiteObj.SetActive(true);
+        IsSetWhite = true;
     }
 }

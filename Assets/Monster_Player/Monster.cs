@@ -25,7 +25,8 @@ public class Monster : MonoBehaviour
     protected Rigidbody rigid;
 
     public float hp = 100f;
-    public int MonsterElement;
+    public Element monsterElement;
+    public Element skillElemnt;
 
     void Start()
     {
@@ -130,25 +131,70 @@ public class Monster : MonoBehaviour
         anim.SetBool("move", true);
     }
 
-    public int GetElement()
+    public Element GetElement()
     {
-        return MonsterElement;
+        return monsterElement;
     }
-
-    public virtual void Damaged(float damage)
+    // 불속성 몬스터는 물 스킬에 약하다.
+    // 물속성 몬스터는 땅 스킬에 약하다.
+    // 땅속성 몬스터는 바람 스킬에 약하다.
+    // 바람속성 몬스터는 불 스킬에 약하다.
+    public virtual void Damaged(Element skillElement, float damage)
     {
-        hp -= damage;
-
+        if(monsterElement == Element.Fire)
+        {
+            if (skillElement == Element.Water)
+            {
+                hp -= damage;
+            }
+            else
+            {
+                hp -= damage * 0.5f;
+            }
+        }
+        else if(monsterElement == Element.Water)
+        {
+            if (skillElement == Element.Earth)
+            {
+                hp -= damage;
+            }
+            else
+            {
+                hp -= damage * 0.5f;
+            }
+        }
+        else if(monsterElement == Element.Earth)
+        {
+            if (skillElement == Element.Wind)
+            {
+                hp -= damage;
+            }
+            else
+            {
+                hp -= damage * 0.5f;
+            }
+        }
+        else if(monsterElement == Element.Wind)
+        {
+            if (skillElement == Element.Fire)
+            {
+                hp -= damage;
+            }
+            else
+            {
+                hp -= damage * 0.5f;
+            }
+        }
         if (hp <= 0)
         {
-            Debug.Log(gameObject.name + " �׾����ϴ�.!");
+            Debug.Log(gameObject.name + " 죽었습니다.!");
             anim.SetBool("die", true);
             Destroy(gameObject, 1.5f);
         }
         else
         {
             StartCoroutine(KnockBack());
-            Debug.Log(gameObject.name + "���ݹ��� : " + damage + "����ü�� : " + hp + "�Դϴ�.");
+            Debug.Log(gameObject.name + "공격받음 : " + damage + "남은체력 : " + hp + "입니다.");
         }
     }
 

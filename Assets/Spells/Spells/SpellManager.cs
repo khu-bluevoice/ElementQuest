@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,6 +6,12 @@ public class SpellManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject TeleportManager;
+
+    [SerializeField]
+    private SkillScript SkillManager;
+
+    [SerializeField]
+    private Transform MainCamera;
 
     // 활성화된 스펠 관리
     [SerializeField]
@@ -42,6 +49,10 @@ public class SpellManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 회전 회오리
+        this.transform.eulerAngles = new Vector3(0, MainCamera.eulerAngles.y, 0);
+        this.transform.localPosition = MainCamera.localPosition - new Vector3(0, 0.3f, 0);
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Debug.Log("1키 누름");
@@ -68,6 +79,17 @@ public class SpellManager : MonoBehaviour
         }
     }
 
+    void selectSpellOfSelector(SpellName detectedSpell)
+    {
+        int i = 0;
+        foreach (Spell spell in spellSelector.spells)
+        {
+            if (spell.spellName == detectedSpell)
+                spellSelector.SelectSpell(i);
+            i++;
+        }
+    }
+
     // 동작을 인식
     public void HandleSpellDetected(SpellName detectedSpell)
     {
@@ -79,25 +101,29 @@ public class SpellManager : MonoBehaviour
         {
             // 스킬 사용
             selectedSpell = null;
-            // TODO. skill activate
+            // skill cast
+            SkillManager.CastSkill(detectedSpell);
+            // update spell selector
+            selectSpellOfSelector(detectedSpell);
             UpdateSelectableSpells();
         }
         else if (detectedSpell == SpellName.SPELL_START)
         {
             selectedSpell = startSpell;
+            selectSpellOfSelector(detectedSpell);
             UpdateSelectableSpells();
         }
         else
         {
             // 스킬 사용 업데이트
             int index = spellNames.IndexOf(detectedSpell);
-            Debug.Log(index);
             if (index != -1)
             {
                 if (isSpellActive[index])
                 {
                     // 스킬 선택
                     selectedSpell = spells[index];
+                    selectSpellOfSelector(detectedSpell);
                     UpdateSelectableSpells();
                 }
             }
@@ -112,7 +138,7 @@ public class SpellManager : MonoBehaviour
         {
             // Spell Start && Teleport
             selectableSpells.Add(startSpell);
-            selectableSpells.Add(moveSpell);
+            //selectableSpells.Add(moveSpell);
         }
         // 동작이 인식되면, selectedSpell 바뀌고,
         // selectedSpell에 맞춰서 selectableSpells가 업데이트 됨
@@ -131,17 +157,17 @@ public class SpellManager : MonoBehaviour
             {
                 // 연계 가능한 스킬이 없으면 스킬 종료
                 selectableSpells.Add(endSpell);
-                selectableSpells.Add(moveSpell);
+                //selectableSpells.Add(moveSpell);
             } else
             {
                 if (selectedSpell.level + 1 > 1) selectableSpells.Add(endSpell);
-                selectableSpells.Add(moveSpell);
+                //selectableSpells.Add(moveSpell);
             }
         }
         else // level 3 selected
         {
             selectableSpells.Add(endSpell);
-            selectableSpells.Add(moveSpell); 
+            //selectableSpells.Add(moveSpell); 
         }
 
         spellSelector.spells = selectableSpells;

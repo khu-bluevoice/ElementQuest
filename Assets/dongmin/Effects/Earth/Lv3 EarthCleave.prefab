@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4017485160524936391
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 112892, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: m_Name
+      value: Lv3 EarthCleave
+      objectReference: {fileID: 0}
+    - target: {fileID: 477634, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.4598122
+      objectReference: {fileID: 0}
+    - target: {fileID: 477634, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 477634, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.5277123
+      objectReference: {fileID: 0}
+    - target: {fileID: 477634, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 477634, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 477634, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 477634, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 477634, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 477634, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 477634, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19818776, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19818776, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19818776, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19818776, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 19850104, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19850104, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19850104, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19884626, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: stopAction
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 19884626, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19884626, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19884626, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 175236, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3797320251550887051}
+  m_SourcePrefab: {fileID: 100100000, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+--- !u!1 &4017485160525027395 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 175236, guid: c8de862bb6863924cb9ce1f2682532e8, type: 3}
+  m_PrefabInstance: {fileID: 4017485160524936391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3797320251550887051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4017485160525027395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3688e340f27dc4342801cb88c4af77f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillElement: 2
+  skillDamage: 50
