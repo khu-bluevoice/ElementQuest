@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 997115656602791946}
   - component: {fileID: 4400289497460425322}
+  - component: {fileID: 9178888950919745516}
   m_Layer: 0
   m_Name: SpellSelector
   m_TagString: Untagged
@@ -17,21 +18,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &997115656602791946
-Transform:
+--- !u!224 &997115656602791946
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7628381758532251034}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &4400289497460425322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,3 +53,27 @@ MonoBehaviour:
   - {fileID: -5273281454240106258, guid: 0f6eb70bcbf994ab0bf78645f3638250, type: 3}
   - {fileID: -5273281454240106258, guid: d67d8bd44434a4cec8c0f94d50d81dba, type: 3}
   spellCardPrefab: {fileID: 1705301389528827093, guid: c1e7483c9fc964301bde4eb8a3a703ae, type: 3}
+  isOpen: 0
+--- !u!223 &9178888950919745516
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7628381758532251034}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0

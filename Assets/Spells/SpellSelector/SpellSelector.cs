@@ -12,27 +12,44 @@ public class SpellSelector : MonoBehaviour
 
     public GameObject spellCardPrefab;
 
-    float width = 16;
-    float height = 30;
+    float width = 200;
+    float height = 300;
+
+    float closedY = -500f;
+    float openedY = -230f;
 
     public bool isOpen = false;
     bool isSelecting = false;
 
     void Start()
     {
+        DrawDeck();
+    }
+
+    public void DrawDeck()
+    {
+        // reset existing
+        foreach (GameObject obj in spellGameObjects)
+            Destroy(obj);
+        spellGameObjects = new List<GameObject>();
+        // draw deck
         float startX = spells.Count * width / -2 + width / 2;
         for (int i = 0; i < spells.Count; i++)
         {
             Vector3 position = new Vector3(startX + i * width, 0, 0);
             GameObject a = Instantiate(spellCardPrefab, this.transform);
-            a.transform.localScale = new Vector3(0.075f, 0.075f, 0.075f);
+            a.transform.localScale = new Vector3(10, 10, 10);
             a.transform.position += position;
             a.GetComponent<SpellCardUI>().spell = spells[i];
             spellGameObjects.Add(a);
         }
 
-        if (isOpen) this.transform.position = new Vector3(this.transform.position.x, -20, this.transform.position.z);
-        else this.transform.position = new Vector3(this.transform.position.x, -50, this.transform.position.z);
+        if (isOpen)
+            foreach (GameObject obj in spellGameObjects)
+                obj.transform.localPosition = new Vector3(obj.transform.localPosition.x, openedY, obj.transform.localPosition.z);
+        else
+            foreach (GameObject obj in spellGameObjects)
+                obj.transform.localPosition = new Vector3(obj.transform.localPosition.x, closedY, obj.transform.localPosition.z);
     }
 
     public void SelectSpell(int number)
@@ -51,30 +68,30 @@ public class SpellSelector : MonoBehaviour
 
         float initialScale = spell.transform.localScale.x;
 
-        float from = spell.transform.position.y;
-        float to = spell.transform.position.y + 5f;
+        float from = spell.transform.localPosition.y;
+        float to = spell.transform.localPosition.y + 100f;
 
         float scaleFrom = spell.transform.localScale.x;
         float scaleTo = spell.transform.localScale.x + 0.02f;
 
-        float animtionTime = 5f;
+        float animtionTime = 10f;
         float t = 0;
         while (t < 1f)
         {
             t += Time.deltaTime * animtionTime;
             float y = Mathf.Lerp(from, to, t);
             float s = Mathf.Lerp(scaleFrom, scaleTo, t);
-            spell.transform.position = new Vector3(spell.transform.position.x, y, spell.transform.position.z);
+            spell.transform.localPosition = new Vector3(spell.transform.localPosition.x, y, spell.transform.localPosition.z);
             spell.transform.localScale = new Vector3(s, s, s);
             yield return null;
         }
-        while (t < 2f)
+        while (t < 3f)
         {
             t += Time.deltaTime * animtionTime;
             yield return null;
         }
-        StartCoroutine(_Close(this.transform));
-        spell.transform.localPosition = new Vector3(spell.transform.position.x, 0, 0);
+        StartCoroutine(CloseAndOpenForSpellSelection());
+        spell.transform.localPosition = new Vector3(spell.transform.localPosition.x, 0, spell.transform.localPosition.z);
         spell.transform.localScale = new Vector3(initialScale, initialScale, initialScale);
         isSelecting = false;
         yield return 0;
@@ -88,6 +105,31 @@ public class SpellSelector : MonoBehaviour
         }
     }
 
+    IEnumerator CloseAndOpenForSpellSelection()
+    {
+        float from = openedY;
+        float to = closedY;
+
+        float t = 0;
+        while (t < 1f)
+        {
+            t += Time.deltaTime * animtionTime;
+            float y = Mathf.Lerp(from, to, t);
+
+            foreach (GameObject obj in spellGameObjects)
+            {
+                obj.transform.localPosition = new Vector3(obj.transform.localPosition.x, y, obj.transform.localPosition.z);
+            }
+
+            yield return null;
+        }
+        isOpen = false;
+        DrawDeck();
+        StartCoroutine(_Open());
+
+        yield return 0;
+    }
+
     public void Toggle()
     {
         if (isOpen) Close();
@@ -97,27 +139,32 @@ public class SpellSelector : MonoBehaviour
     public void Open()
     {
         if (!isOpen && !isSelecting)
-            StartCoroutine(_Open(this.transform));
+            StartCoroutine(_Open());
     }
 
     public void Close()
     {
         if (isOpen && !isSelecting)
-            StartCoroutine(_Close(this.transform));
+            StartCoroutine(_Close());
     }
 
     float animtionTime = 12f;
-    IEnumerator _Open(Transform selector)
+    IEnumerator _Open()
     {
-        float from = -50f;
-        float to = -20f;
+        float from = closedY;
+        float to = openedY;
 
         float t = 0;
         while (t < 1f)
         {
             t += Time.deltaTime * animtionTime;
             float y = Mathf.Lerp(from, to, t);
-            selector.position = new Vector3(selector.position.x, y, selector.position.z);
+
+            foreach (GameObject obj in spellGameObjects)
+            {
+                obj.transform.localPosition = new Vector3(obj.transform.localPosition.x, y, obj.transform.localPosition.z);
+            }
+
             yield return null;
         }
         isOpen = true;
@@ -125,17 +172,22 @@ public class SpellSelector : MonoBehaviour
         yield return 0;
     }
 
-    IEnumerator _Close(Transform selector)
+    IEnumerator _Close()
     {
-        float from = -20f;
-        float to = -50f;
+        float from = openedY;
+        float to = closedY;
 
         float t = 0;
         while (t < 1f)
         {
             t += Time.deltaTime * animtionTime;
             float y = Mathf.Lerp(from, to, t);
-            selector.position = new Vector3(selector.position.x, y, selector.position.z);
+
+            foreach (GameObject obj in spellGameObjects)
+            {
+                obj.transform.localPosition = new Vector3(obj.transform.localPosition.x, y, obj.transform.localPosition.z);
+            }
+
             yield return null;
         }
         isOpen = false;

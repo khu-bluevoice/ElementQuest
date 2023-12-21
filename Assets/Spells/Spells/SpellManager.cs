@@ -1,16 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class SpellManager : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject TeleportManager;
+
     // 활성화된 스펠 관리
     [SerializeField]
     public Spell[] spells;
 
     [SerializeField]
     public bool[] isSpellActive;
+
+    [SerializeField]
+    public List<SpellName> spellNames;
 
     [SerializeField]
     private Spell startSpell;
@@ -30,36 +34,116 @@ public class SpellManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        HandleGesture();
+        selectedSpell = null;
+        UpdateSelectableSpells();
+        spellSelector.DrawDeck();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Debug.Log("1키 누름");
+            HandleSpellDetected(selectableSpells[0].spellName);
+            spellSelector.SelectSpell(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Debug.Log("2키 누름");
+            HandleSpellDetected(selectableSpells[1].spellName);
+            spellSelector.SelectSpell(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Debug.Log("3키 누름");
+            HandleSpellDetected(selectableSpells[2].spellName);
+            spellSelector.SelectSpell(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            Debug.Log("4키 누름");
+            HandleSpellDetected(selectableSpells[3].spellName);
+            spellSelector.SelectSpell(3);
+        }
     }
 
     // 동작을 인식
-    public void HandleGesture()
+    public void HandleSpellDetected(SpellName detectedSpell)
     {
-        if (!selectedSpell) return;
-
-        selectableSpells = new List<Spell>();
-
-        // 동작이 인식되면, selectedSpell 바뀌고,
-        // selectedSpell에 맞춰서 selectableSpells가 업데이트 됨
-        if (selectedSpell.level < 3)
+        if (detectedSpell == SpellName.TELEPORT)
         {
-            // 연계 가능한 스펠 탐색
-            foreach (Spell spell in spells)
-            {
-                if(spell.parentSpell == selectedSpell)
-                    selectableSpells.Add(spell);
-            }
+            TeleportManager.SendMessage("Teleport");
+        }
+        else if (detectedSpell == SpellName.SPELL_END)
+        {
+            // 스킬 사용
+            selectedSpell = null;
+            // TODO. skill activate
+            UpdateSelectableSpells();
+        }
+        else if (detectedSpell == SpellName.SPELL_START)
+        {
+            selectedSpell = startSpell;
+            UpdateSelectableSpells();
         }
         else
         {
-            selectableSpells.Add(endSpell);
+            // 스킬 사용 업데이트
+            int index = spellNames.IndexOf(detectedSpell);
+            Debug.Log(index);
+            if (index != -1)
+            {
+                if (isSpellActive[index])
+                {
+                    // 스킬 선택
+                    selectedSpell = spells[index];
+                    UpdateSelectableSpells();
+                }
+            }
         }
+    }
+
+    private void UpdateSelectableSpells()
+    {
+        selectableSpells = new List<Spell>();
+
+        if (!selectedSpell)
+        {
+            // Spell Start && Teleport
+            selectableSpells.Add(startSpell);
+            selectableSpells.Add(moveSpell);
+        }
+        // 동작이 인식되면, selectedSpell 바뀌고,
+        // selectedSpell에 맞춰서 selectableSpells가 업데이트 됨
+        else if (selectedSpell.level < 3)
+        {
+            // 연계 가능한 스펠 탐색
+            int i = 0;
+            foreach (Spell spell in spells)
+            {
+                if (isSpellActive[i] && spell.level == selectedSpell.level + 1 && spell.parentSpell && spell.parentSpell.spellName == selectedSpell.spellName)
+                    selectableSpells.Add(spell);
+                i++;
+            }
+
+            if (selectableSpells.Count == 0)
+            {
+                // 연계 가능한 스킬이 없으면 스킬 종료
+                selectableSpells.Add(endSpell);
+                selectableSpells.Add(moveSpell);
+            } else
+            {
+                if (selectedSpell.level + 1 > 1) selectableSpells.Add(endSpell);
+                selectableSpells.Add(moveSpell);
+            }
+        }
+        else // level 3 selected
+        {
+            selectableSpells.Add(endSpell);
+            selectableSpells.Add(moveSpell); 
+        }
+
+        spellSelector.spells = selectableSpells;
     }
 }

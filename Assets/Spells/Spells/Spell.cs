@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spell : MonoBehaviour
 {
     [SerializeField]
-    public string spellName;
+    public SpellName spellName;
 
     [SerializeField]
     public string description;

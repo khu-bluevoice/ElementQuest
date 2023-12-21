@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71280a3a1ba8744c3886e4e0e719d996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellName: 3
+  spellName: 6
   description: "\uBB3C\uC744 \uBFCC\uB9BD\uB2C8\uB2E4."
   element: 1
   parentSpell: {fileID: -5273281454240106258, guid: f888ff2efe491481987ad73e4484d593, type: 3}
