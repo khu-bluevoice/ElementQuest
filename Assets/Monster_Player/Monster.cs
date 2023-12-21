@@ -118,7 +118,7 @@ public class Monster : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 GameObject instantBullet = Instantiate(monsterSkill, monsterSkillPos.transform.position, monsterSkillPos.transform.rotation);
                 Rigidbody rigidSkill = instantBullet.GetComponent<Rigidbody>();                  
-                rigidSkill.velocity = transform.forward * 50;
+                rigidSkill.velocity = transform.forward * 20;
 
                 yield return new WaitForSeconds(2f);
                 break;

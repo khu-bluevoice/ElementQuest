@@ -578,7 +578,7 @@ MonoBehaviour:
   isAttack: 0
   meleeAttack: {fileID: 0}
   monsterSkillPos: {fileID: 5783344344335427042}
-  monsterSkill: {fileID: 9052813570278170021, guid: 85bdb7be4cd087942b69a7c84c7a0d83, type: 3}
+  monsterSkill: {fileID: 174222, guid: ff983af6482f19f4ca9212e1f5b2df20, type: 3}
   target: {fileID: 0}
   hp: 100
   monsterElement: 0
