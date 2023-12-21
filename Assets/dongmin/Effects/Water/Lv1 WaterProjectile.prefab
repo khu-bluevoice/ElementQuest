@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1300573103503756, guid: 1c48df1cb0f3d824c8041c90c684038b, type: 3}
       propertyPath: m_Name
-      value: Projectile 9 Variant
+      value: Lv1 WaterProjectile
       objectReference: {fileID: 0}
     - target: {fileID: 4603611077099896, guid: 1c48df1cb0f3d824c8041c90c684038b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -51,6 +51,10 @@ PrefabInstance:
     - target: {fileID: 4603611077099896, guid: 1c48df1cb0f3d824c8041c90c684038b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198565110370433080, guid: 1c48df1cb0f3d824c8041c90c684038b, type: 3}
+      propertyPath: stopAction
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 199632313697423724, guid: 1c48df1cb0f3d824c8041c90c684038b, type: 3}
       propertyPath: m_Materials.Array.size

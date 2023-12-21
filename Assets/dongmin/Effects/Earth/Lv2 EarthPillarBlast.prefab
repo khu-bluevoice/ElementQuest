@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 119514, guid: 5d0c6afdcfb9c8440840b5b6f53792a5, type: 3}
       propertyPath: m_Name
-      value: EarthPillarBlast Variant
+      value: Lv2 EarthPillarBlast
       objectReference: {fileID: 0}
     - target: {fileID: 418450, guid: 5d0c6afdcfb9c8440840b5b6f53792a5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -51,6 +51,10 @@ PrefabInstance:
     - target: {fileID: 418450, guid: 5d0c6afdcfb9c8440840b5b6f53792a5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19863116, guid: 5d0c6afdcfb9c8440840b5b6f53792a5, type: 3}
+      propertyPath: stopAction
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

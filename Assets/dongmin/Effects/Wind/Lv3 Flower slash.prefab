@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1492667978523942, guid: bd76aad308d231743b8d95dd2c02d6b1, type: 3}
       propertyPath: m_Name
-      value: Flower slash Variant
+      value: Lv3 Flower slash
       objectReference: {fileID: 0}
     - target: {fileID: 4427193703434510, guid: bd76aad308d231743b8d95dd2c02d6b1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -50,6 +50,70 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4427193703434510, guid: bd76aad308d231743b8d95dd2c02d6b1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198048852150245464, guid: bd76aad308d231743b8d95dd2c02d6b1, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198077547312772074, guid: bd76aad308d231743b8d95dd2c02d6b1, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198109325651994968, guid: bd76aad308d231743b8d95dd2c02d6b1, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198115549039669774, guid: bd76aad308d231743b8d95dd2c02d6b1, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198187525246143542, guid: bd76aad308d231743b8d95dd2c02d6b1, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198346897515987192, guid: bd76aad308d231743b8d95dd2c02d6b1, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198346897515987192, guid: bd76aad308d231743b8d95dd2c02d6b1, type: 3}
+      propertyPath: stopAction
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 198485755672223174, guid: bd76aad308d231743b8d95dd2c02d6b1, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198507542171701600, guid: bd76aad308d231743b8d95dd2c02d6b1, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198521851666521108, guid: bd76aad308d231743b8d95dd2c02d6b1, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198571008869356118, guid: bd76aad308d231743b8d95dd2c02d6b1, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198582531501696138, guid: bd76aad308d231743b8d95dd2c02d6b1, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198595289456716784, guid: bd76aad308d231743b8d95dd2c02d6b1, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198648627282984648, guid: bd76aad308d231743b8d95dd2c02d6b1, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198725689264907448, guid: bd76aad308d231743b8d95dd2c02d6b1, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198961111017422766, guid: bd76aad308d231743b8d95dd2c02d6b1, type: 3}
+      propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 199009069383942640, guid: bd76aad308d231743b8d95dd2c02d6b1, type: 3}

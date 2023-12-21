@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1473103337094032, guid: c7abcdbfc011815408fe700b0f70bebe, type: 3}
       propertyPath: m_Name
-      value: Projectile 12 Variant
+      value: Lv2 Green more big Projectile
       objectReference: {fileID: 0}
     - target: {fileID: 4347979542021874, guid: c7abcdbfc011815408fe700b0f70bebe, type: 3}
       propertyPath: m_LocalScale.x
@@ -71,6 +71,10 @@ PrefabInstance:
     - target: {fileID: 4416643958488934, guid: c7abcdbfc011815408fe700b0f70bebe, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198769173318898536, guid: c7abcdbfc011815408fe700b0f70bebe, type: 3}
+      propertyPath: stopAction
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 199054755563360842, guid: c7abcdbfc011815408fe700b0f70bebe, type: 3}
       propertyPath: m_Materials.Array.size

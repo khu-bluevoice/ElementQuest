@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1168065043843762, guid: 70cd80e6e8517904da249485ffde005f, type: 3}
       propertyPath: m_Name
-      value: Projectile 1 Variant
+      value: Lv1 Green Projectile
       objectReference: {fileID: 0}
     - target: {fileID: 4419754347879064, guid: 70cd80e6e8517904da249485ffde005f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -51,6 +51,10 @@ PrefabInstance:
     - target: {fileID: 4419754347879064, guid: 70cd80e6e8517904da249485ffde005f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198470652497635546, guid: 70cd80e6e8517904da249485ffde005f, type: 3}
+      propertyPath: stopAction
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 199045256733629516, guid: 70cd80e6e8517904da249485ffde005f, type: 3}
       propertyPath: m_Materials.Array.size

@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 124858, guid: 08024a0f969f6a04ebcd83afbfde2200, type: 3}
       propertyPath: m_Name
-      value: WaterPillarBlast Variant
+      value: Lv3 WaterPillarBlast
       objectReference: {fileID: 0}
     - target: {fileID: 402020, guid: 08024a0f969f6a04ebcd83afbfde2200, type: 3}
       propertyPath: m_LocalPosition.x
@@ -51,6 +51,10 @@ PrefabInstance:
     - target: {fileID: 402020, guid: 08024a0f969f6a04ebcd83afbfde2200, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19855062, guid: 08024a0f969f6a04ebcd83afbfde2200, type: 3}
+      propertyPath: stopAction
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 19905850, guid: 08024a0f969f6a04ebcd83afbfde2200, type: 3}
       propertyPath: m_Materials.Array.size
