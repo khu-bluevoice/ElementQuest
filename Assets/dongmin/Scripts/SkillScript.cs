@@ -40,12 +40,64 @@ public class SkillScript : MonoBehaviour
     private GameObject flooring_clone;
 
     bool isfiring = false;
-
+    void getgroundposition(Vector3 groundpos)
+    {
+        // TO-DO
+        // 땅에서 일어나는 스킬들을 제대로 구현하기 위해선 스킬이 작동될 땅의 위치를 얻어야한다.
+        // 현재 땅에서 이펙트되는 스킬들은 임의의 위치값을 가지고 있다.
+    }
     void FireLv1()
     {
         Instantiate(Lv1_fire, playerhand.transform.position, playerhand.transform.rotation);
     }
-
+    void FireLv2()
+    {
+        casting_clone = Instantiate(Lv2_fire, playerhand.transform.position, playerhand.transform.rotation);
+    }
+    void FireLv3()
+    {
+        Vector3 newposition = playerhand.transform.position + playerhand.transform.forward * 5;
+        Instantiate(Lv3_fire, new Vector3(newposition.x, newposition.y - playerheight, newposition.z), playerhand.transform.rotation);
+    }
+    void WaterLv1()
+    {
+        Instantiate(Lv1_water, playerhand.transform.position, playerhand.transform.rotation);
+    }
+    void WaterLv2()
+    {
+        Instantiate(Lv2_water, new Vector3(playerhand.transform.position.x, playerhand.transform.position.y - playerheight, playerhand.transform.position.z), playerhand.transform.rotation);
+    }
+    void WaterLv3()
+    {
+        Vector3 newposition = playerhand.transform.position + playerhand.transform.forward * 5;
+        Instantiate(Lv3_water, new Vector3(newposition.x, newposition.y - playerheight, newposition.z), Lv3_water.transform.rotation);
+    }
+    void EarthLv1()
+    {
+        Instantiate(Lv1_earth, playerhand.transform.position, playerhand.transform.rotation);
+    }
+    void EarthLv2()
+    {
+        Vector3 newposition = playerhand.transform.position + playerhand.transform.forward * 5;
+        Instantiate(Lv2_earth, new Vector3(newposition.x, newposition.y - playerheight, newposition.z), Lv3_water.transform.rotation);
+    }
+    void EarthLv3()
+    {
+        Instantiate(Lv3_earth, new Vector3(playerhand.transform.position.x, playerhand.transform.position.y - playerheight, playerhand.transform.position.z), playerhand.transform.rotation);
+    }
+    void WindLv1()
+    {
+        Instantiate(Lv1_wind, playerhand.transform.position, playerhand.transform.rotation);
+    }
+    void WindLv2()
+    {
+        Instantiate(Lv2_wind, playerhand.transform.position, playerhand.transform.rotation);
+    }
+    void WindLv3()
+    {
+        Vector3 newposition = playerhand.transform.position + playerhand.transform.forward * 5;
+        Instantiate(Lv3_wind, new Vector3(newposition.x, newposition.y - playerheight, newposition.z), Lv3_wind.transform.rotation);
+    }
     // Start is called before the first frame update
     void Start()
     {

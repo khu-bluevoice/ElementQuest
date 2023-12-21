@@ -84,9 +84,33 @@ PrefabInstance:
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198262574041359660, guid: a91a44d8fe830874cb776823c2ba3e9f, type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198262574041359660, guid: a91a44d8fe830874cb776823c2ba3e9f, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198262574041359660, guid: a91a44d8fe830874cb776823c2ba3e9f, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 198276660257425478, guid: a91a44d8fe830874cb776823c2ba3e9f, type: 3}
       propertyPath: looping
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198276660257425478, guid: a91a44d8fe830874cb776823c2ba3e9f, type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198276660257425478, guid: a91a44d8fe830874cb776823c2ba3e9f, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198276660257425478, guid: a91a44d8fe830874cb776823c2ba3e9f, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198338978647502382, guid: a91a44d8fe830874cb776823c2ba3e9f, type: 3}
       propertyPath: looping
@@ -149,8 +173,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 198947835816751376, guid: a91a44d8fe830874cb776823c2ba3e9f, type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198947835816751376, guid: a91a44d8fe830874cb776823c2ba3e9f, type: 3}
       propertyPath: CollisionModule.enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198947835816751376, guid: a91a44d8fe830874cb776823c2ba3e9f, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 199012644479925808, guid: a91a44d8fe830874cb776823c2ba3e9f, type: 3}
       propertyPath: m_Materials.Array.size
@@ -235,5 +267,27 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1648451675218304, guid: a91a44d8fe830874cb776823c2ba3e9f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5031041883311595686}
   m_SourcePrefab: {fileID: 100100000, guid: a91a44d8fe830874cb776823c2ba3e9f, type: 3}
+--- !u!1 &2585675903244720428 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1648451675218304, guid: a91a44d8fe830874cb776823c2ba3e9f, type: 3}
+  m_PrefabInstance: {fileID: 2587302364150479020}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5031041883311595686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585675903244720428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3688e340f27dc4342801cb88c4af77f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillElement: 0
+  skillDamage: 100
