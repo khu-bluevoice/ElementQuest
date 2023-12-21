@@ -9,6 +9,9 @@ public class SpellManager : MonoBehaviour
     [SerializeField]
     private SkillScript SkillManager;
 
+    [SerializeField]
+    private Transform MainCamera;
+
     // 활성화된 스펠 관리
     [SerializeField]
     public Spell[] spells;
@@ -45,30 +48,34 @@ public class SpellManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Alpha1))
-        //{
-        //    Debug.Log("1키 누름");
-        //    HandleSpellDetected(selectableSpells[0].spellName);
-        //    spellSelector.SelectSpell(0);
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha2))
-        //{
-        //    Debug.Log("2키 누름");
-        //    HandleSpellDetected(selectableSpells[1].spellName);
-        //    spellSelector.SelectSpell(1);
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha3))
-        //{
-        //    Debug.Log("3키 누름");
-        //    HandleSpellDetected(selectableSpells[2].spellName);
-        //    spellSelector.SelectSpell(2);
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha4))
-        //{
-        //    Debug.Log("4키 누름");
-        //    HandleSpellDetected(selectableSpells[3].spellName);
-        //    spellSelector.SelectSpell(3);
-        //}
+        // 회전 회오리
+        this.transform.eulerAngles = new Vector3(0, MainCamera.eulerAngles.y, 0);
+        this.transform.localPosition = MainCamera.localPosition - new Vector3(0, 0.3f, 0);
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Debug.Log("1키 누름");
+            HandleSpellDetected(selectableSpells[0].spellName);
+            spellSelector.SelectSpell(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Debug.Log("2키 누름");
+            HandleSpellDetected(selectableSpells[1].spellName);
+            spellSelector.SelectSpell(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Debug.Log("3키 누름");
+            HandleSpellDetected(selectableSpells[2].spellName);
+            spellSelector.SelectSpell(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            Debug.Log("4키 누름");
+            HandleSpellDetected(selectableSpells[3].spellName);
+            spellSelector.SelectSpell(3);
+        }
     }
 
     // 동작을 인식
@@ -124,7 +131,7 @@ public class SpellManager : MonoBehaviour
         {
             // Spell Start && Teleport
             selectableSpells.Add(startSpell);
-            selectableSpells.Add(moveSpell);
+            //selectableSpells.Add(moveSpell);
         }
         // 동작이 인식되면, selectedSpell 바뀌고,
         // selectedSpell에 맞춰서 selectableSpells가 업데이트 됨
@@ -143,17 +150,17 @@ public class SpellManager : MonoBehaviour
             {
                 // 연계 가능한 스킬이 없으면 스킬 종료
                 selectableSpells.Add(endSpell);
-                selectableSpells.Add(moveSpell);
+                //selectableSpells.Add(moveSpell);
             } else
             {
                 if (selectedSpell.level + 1 > 1) selectableSpells.Add(endSpell);
-                selectableSpells.Add(moveSpell);
+                //selectableSpells.Add(moveSpell);
             }
         }
         else // level 3 selected
         {
             selectableSpells.Add(endSpell);
-            selectableSpells.Add(moveSpell); 
+            //selectableSpells.Add(moveSpell); 
         }
 
         spellSelector.spells = selectableSpells;

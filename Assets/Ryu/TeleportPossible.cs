@@ -24,28 +24,19 @@ public class TeleportPossible : MonoBehaviour
         
     }
 
-    void OnTriggerEnter(Collider other)
+    void _OnTriggerEnter()
     {
-        if (other.gameObject == TeleportManager)
-        {
             Debug.Log("haha");
             WhiteObj.SetActive(false);
             RedObj.SetActive(true);
             IsSetWhite = false;
-        }
     }
 
-    void OnTriggerExit(Collider other)
+    void _OnTriggerExit()
     {
-        if(!IsSetWhite)
-        {
-            if (other.gameObject == TeleportManager)
-            {
                 Debug.Log("dadada");
                 RedObj.SetActive(false);
                 WhiteObj.SetActive(true);
                 IsSetWhite = true;
-            }
-        }
     }
 }

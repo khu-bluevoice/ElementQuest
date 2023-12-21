@@ -48,13 +48,15 @@ namespace Oculus.Interaction.Samples
                 _poseActiveVisuals[i].SetActive(false);
 
                 int poseNumber = i;
-                _poses[i].WhenSelected += () => ShowVisuals(poseNumber);
-                _poses[i].WhenUnselected += () => HideVisuals(poseNumber);
+                //_poses[i].WhenSelected += () => ShowVisuals(poseNumber);
+                //_poses[i].WhenUnselected += () => HideVisuals(poseNumber);
+
+                AndroidToast.I.ShowToastMessage("Start" + i);
 
                 switch (i)
                 {
                     case 0:
-                        _poses[i].WhenSelected += () => SpellManager.HandleSpellDetected(SpellName.TELEPORT);
+                        _poses[i].WhenSelected += () => DoTeleport();
                         break;
                     case 1:
                         _poses[i].WhenSelected += () => SpellManager.HandleSpellDetected(SpellName.SPELL_START);
@@ -131,6 +133,7 @@ namespace Oculus.Interaction.Samples
 
         private void DoTeleport()
         {
+            AndroidToast.I.ShowToastMessage("DoTeleport");
             TeleportManager.SendMessage("Teleport");
         }
     }

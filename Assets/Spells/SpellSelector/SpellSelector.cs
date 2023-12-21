@@ -39,7 +39,7 @@ public class SpellSelector : MonoBehaviour
             Vector3 position = new Vector3(startX + i * width, 0, 0);
             GameObject a = Instantiate(spellCardPrefab, this.transform);
             a.transform.localScale = new Vector3(10, 10, 10);
-            a.transform.position += position;
+            a.transform.localPosition = position;
             a.GetComponent<SpellCardUI>().spell = spells[i];
             spellGameObjects.Add(a);
         }
