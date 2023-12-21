@@ -53,15 +53,41 @@ public class SkillScript : MonoBehaviour
             case SpellName.EARTH_LV1:
                 EarthLv1();
                 break;
+            case SpellName.FIRE_LV1:
+                FireLv1();
+                break;
+            case SpellName.WATER_LV1:
+                WaterLv1();
+                break;
+            case SpellName.WIND_LV1:
+                WindLv1();
+                break;
+            case SpellName.FIRE_LV2:
+                FireLv2();
+                break;
+            case SpellName.WIND_LV2:
+                WindLv2();
+                break;
         }
     }
     void FireLv1()
     {
-        Instantiate(Lv1_fire, playerhand.transform.position, playerhand.transform.rotation);
+        //Quaternion currentRotation = playerhand.transform.rotation; 
+        //Quaternion rotatedQuaternion = Quaternion.Euler(5, 90, 0) * currentRotation;
+        Vector3 forwardmaxpos = Camera.main.transform.forward * 1000f + Camera.main.transform.position;
+        Vector3 direction = forwardmaxpos - playerhand.transform.position;
+        direction.Normalize();
+
+        //Instantiate(Lv1_fire, playerhand.transform.position, playerhand.transform.rotation);
+        Instantiate(Lv1_fire, playerhand.transform.position, Quaternion.LookRotation(direction));
     }
     void FireLv2()
     {
-        casting_clone = Instantiate(Lv2_fire, playerhand.transform.position, playerhand.transform.rotation);
+        Vector3 forwardmaxpos = Camera.main.transform.forward * 1000f + Camera.main.transform.position;
+        Vector3 direction = forwardmaxpos - playerhand.transform.position;
+        direction.Normalize();
+
+        casting_clone = Instantiate(Lv2_fire, playerhand.transform.position, Quaternion.LookRotation(direction));
     }
     void FireLv3()
     {
@@ -70,7 +96,11 @@ public class SkillScript : MonoBehaviour
     }
     void WaterLv1()
     {
-        Instantiate(Lv1_water, playerhand.transform.position, playerhand.transform.rotation);
+        Vector3 forwardmaxpos = Camera.main.transform.forward * 1000f + Camera.main.transform.position;
+        Vector3 direction = forwardmaxpos - playerhand.transform.position;
+        direction.Normalize();
+
+        Instantiate(Lv1_water, playerhand.transform.position, Quaternion.LookRotation(direction));
     }
     void WaterLv2()
     {
@@ -83,7 +113,11 @@ public class SkillScript : MonoBehaviour
     }
     void EarthLv1()
     {
-        Instantiate(Lv1_earth, playerhand.transform.position, playerhand.transform.rotation);
+        Vector3 forwardmaxpos = Camera.main.transform.forward * 1000f + Camera.main.transform.position;
+        Vector3 direction = forwardmaxpos - playerhand.transform.position;
+        direction.Normalize();
+
+        Instantiate(Lv1_earth, playerhand.transform.position, Quaternion.LookRotation(direction));
     }
     void EarthLv2()
     {
@@ -96,11 +130,18 @@ public class SkillScript : MonoBehaviour
     }
     void WindLv1()
     {
-        Instantiate(Lv1_wind, playerhand.transform.position, playerhand.transform.rotation);
+        Vector3 forwardmaxpos = Camera.main.transform.forward * 1000f + Camera.main.transform.position;
+        Vector3 direction = forwardmaxpos - playerhand.transform.position;
+        direction.Normalize();
+
+        Instantiate(Lv1_wind, playerhand.transform.position, Quaternion.LookRotation(direction));
     }
     void WindLv2()
     {
-        Instantiate(Lv2_wind, playerhand.transform.position, playerhand.transform.rotation);
+        Vector3 forwardmaxpos = Camera.main.transform.forward * 1000f + Camera.main.transform.position;
+        Vector3 direction = forwardmaxpos - playerhand.transform.position;
+        direction.Normalize();
+        Instantiate(Lv2_wind, playerhand.transform.position, Quaternion.LookRotation(direction));
     }
     void WindLv3()
     {
@@ -114,15 +155,19 @@ public class SkillScript : MonoBehaviour
     }
     void Update()
     {
+        // 화염방사기 유지하는 거여서 없애면 안댐!
         if (casting_clone)
         {
+            Vector3 forwardmaxpos = Camera.main.transform.forward * 1000f + Camera.main.transform.position;
+            Vector3 direction = forwardmaxpos - playerhand.transform.position;
+            direction.Normalize();
             casting_clone.transform.position = playerhand.transform.position;
-            casting_clone.transform.rotation = playerhand.transform.rotation;
+            casting_clone.transform.rotation = Quaternion.LookRotation(direction);
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
 
-            Instantiate(Lv1_fire, playerhand.transform.position, playerhand.transform.rotation);
+            FireLv1();
             //Lv1_fire.transform.position = player.transform.position;
             //Lv1_fire.GetComponent<ParticleSystem>().Play();
         }

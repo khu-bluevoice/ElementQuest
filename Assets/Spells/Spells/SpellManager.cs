@@ -96,11 +96,11 @@ public class SpellManager : MonoBehaviour
         else if (detectedSpell == SpellName.SPELL_END)
         {
             // 스킬 사용
-            selectedSpell = null;
-            // skill cast
-            SkillManager.CastSkill(detectedSpell);
+            SkillManager.CastSkill(selectedSpell.spellName);
             // update spell selector
             selectSpellOfSelector(detectedSpell);
+            // reset spells
+            selectedSpell = null;
             UpdateSelectableSpells();
         }
         else if (detectedSpell == SpellName.SPELL_START)
@@ -115,7 +115,7 @@ public class SpellManager : MonoBehaviour
             int index = spellNames.IndexOf(detectedSpell);
             if (index != -1)
             {
-                if (ElementQuestGameManager.instance.isSpellActive[index])
+                if (isSpellActive[index] && selectableSpells.IndexOf(spells[index]) != -1)
                 {
                     // 스킬 선택
                     selectedSpell = spells[index];
