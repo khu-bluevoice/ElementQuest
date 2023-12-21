@@ -6,6 +6,9 @@ public class SpellManager : MonoBehaviour
     [SerializeField]
     private GameObject TeleportManager;
 
+    [SerializeField]
+    private SkillScript SkillManager;
+
     // 활성화된 스펠 관리
     [SerializeField]
     public Spell[] spells;
@@ -42,30 +45,30 @@ public class SpellManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Debug.Log("1키 누름");
-            HandleSpellDetected(selectableSpells[0].spellName);
-            spellSelector.SelectSpell(0);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Debug.Log("2키 누름");
-            HandleSpellDetected(selectableSpells[1].spellName);
-            spellSelector.SelectSpell(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Debug.Log("3키 누름");
-            HandleSpellDetected(selectableSpells[2].spellName);
-            spellSelector.SelectSpell(2);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            Debug.Log("4키 누름");
-            HandleSpellDetected(selectableSpells[3].spellName);
-            spellSelector.SelectSpell(3);
-        }
+        //if (Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    Debug.Log("1키 누름");
+        //    HandleSpellDetected(selectableSpells[0].spellName);
+        //    spellSelector.SelectSpell(0);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    Debug.Log("2키 누름");
+        //    HandleSpellDetected(selectableSpells[1].spellName);
+        //    spellSelector.SelectSpell(1);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha3))
+        //{
+        //    Debug.Log("3키 누름");
+        //    HandleSpellDetected(selectableSpells[2].spellName);
+        //    spellSelector.SelectSpell(2);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha4))
+        //{
+        //    Debug.Log("4키 누름");
+        //    HandleSpellDetected(selectableSpells[3].spellName);
+        //    spellSelector.SelectSpell(3);
+        //}
     }
 
     // 동작을 인식
@@ -79,7 +82,16 @@ public class SpellManager : MonoBehaviour
         {
             // 스킬 사용
             selectedSpell = null;
-            // TODO. skill activate
+            // skill cast
+            SkillManager.CastSkill(detectedSpell);
+            // update spell selector
+            int i = 0;
+            foreach(Spell spell in spellSelector.spells)
+            {
+                if (spell.spellName == detectedSpell)
+                    spellSelector.SelectSpell(i);
+                i++;
+            }
             UpdateSelectableSpells();
         }
         else if (detectedSpell == SpellName.SPELL_START)

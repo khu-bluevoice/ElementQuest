@@ -46,6 +46,15 @@ public class SkillScript : MonoBehaviour
         // 땅에서 일어나는 스킬들을 제대로 구현하기 위해선 스킬이 작동될 땅의 위치를 얻어야한다.
         // 현재 땅에서 이펙트되는 스킬들은 임의의 위치값을 가지고 있다.
     }
+
+    public void CastSkill(SpellName spellName)
+    {
+        switch (spellName) {
+            case SpellName.EARTH_LV1:
+                EarthLv1();
+                break;
+        }
+    }
     void FireLv1()
     {
         Instantiate(Lv1_fire, playerhand.transform.position, playerhand.transform.rotation);
