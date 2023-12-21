@@ -24,4 +24,7 @@ public class Spell : MonoBehaviour
 
     [SerializeField]
     public Sprite handGesture;
+
+    [SerializeField]
+    public int handIndex;
 }

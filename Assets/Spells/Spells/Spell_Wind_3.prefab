@@ -44,10 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71280a3a1ba8744c3886e4e0e719d996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellName: 11
-  description: "\uBB3C\uBCBC\uB77D\uC744 \uBFCC\uB9BD\uB2C8\uB2E4."
+  spellName: 14
+  description: "\uC138\uACC4\uC218\uB97C \uBC1C\uC0AC\uD569\uB2C8\uB2E4."
   element: 3
   parentSpell: {fileID: -5273281454240106258, guid: df2a1b59cd6ea4f5aad45bb02b083b52, type: 3}
   spellIcon: {fileID: 21300000, guid: a92f486f84519304e99c6f40386cb1e1, type: 3}
   level: 3
   handGesture: {fileID: 21300000, guid: 184731c5b3c9b4bb8b902e5bac54ceca, type: 3}
+  handIndex: 1

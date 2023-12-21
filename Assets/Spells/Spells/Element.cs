@@ -4,4 +4,7 @@ public enum Element
     Water = 1,
     Earth = 2,
     Wind = 3,
+    Start = 4,
+    End = 5,
+    Move = 6,
 }
