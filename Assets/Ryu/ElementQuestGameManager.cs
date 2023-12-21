@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class ElementQuestGameManager : MonoBehaviour
 {
-    public Dictionary<string, bool> ClearMap = new Dictionary<string, bool>();
+    public Dictionary<string, bool> ClearMap = new();
     public static ElementQuestGameManager instance = null;
+    
+    [SerializeField]
+    public bool[] isSpellActive = {true, false, false, true, false, false, true, false, false, true, false, false };
 
     private void Awake()
     {

@@ -1,3 +1,4 @@
+using Meta.WitAi;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,11 +11,14 @@ public class TeleportManager : MonoBehaviour
     private RaycastHit hit;
     private GameObject HitColliderSave;
 
+    private int boxlayerMask;
     private int layerMask;
+
     // Start is called before the first frame update
     void Start()
     {
         layerMask = 1 << 8;
+        boxlayerMask = 1 << 9;
     }
 
     // Update is called once per frame
@@ -45,6 +49,25 @@ public class TeleportManager : MonoBehaviour
         if (Physics.Raycast(CenterEye.transform.position, CenterEye.transform.forward, out hit, Mathf.Infinity, layerMask))
         {
             GameCharacter.transform.position = hit.collider.gameObject.transform.position;
+        }
+        else
+        {
+            if(Physics.Raycast(CenterEye.transform.position, CenterEye.transform.forward, out hit, 17f, boxlayerMask))
+            {
+                int cardNum = hit.transform.GetComponent<BoxScript>().CardNum;
+                if (ElementQuestGameManager.instance.isSpellActive[cardNum] == false)
+                {
+                    ElementQuestGameManager.instance.isSpellActive[cardNum] = true;
+                    hit.transform.gameObject.GetComponent<MeshCollider>().enabled = false;
+                    Destroy(hit.transform.GetChild(0).gameObject);
+                }
+                else
+                {
+                    //already get
+                    hit.transform.gameObject.GetComponent<MeshCollider>().enabled = false;
+                    Destroy(hit.transform.GetChild(0).gameObject);
+                }
+            }
         }
     }
         

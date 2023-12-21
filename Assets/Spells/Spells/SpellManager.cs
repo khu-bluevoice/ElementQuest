@@ -11,9 +11,6 @@ public class SpellManager : MonoBehaviour
     public Spell[] spells;
 
     [SerializeField]
-    public bool[] isSpellActive;
-
-    [SerializeField]
     public List<SpellName> spellNames;
 
     [SerializeField]
@@ -31,7 +28,6 @@ public class SpellManager : MonoBehaviour
     private Spell selectedSpell;
     private List<Spell> selectableSpells = new List<Spell>();
 
-    // Start is called before the first frame update
     void Start()
     {
         selectedSpell = null;
@@ -94,7 +90,7 @@ public class SpellManager : MonoBehaviour
             Debug.Log(index);
             if (index != -1)
             {
-                if (isSpellActive[index])
+                if (ElementQuestGameManager.instance.isSpellActive[index])
                 {
                     // 스킬 선택
                     selectedSpell = spells[index];
@@ -122,7 +118,7 @@ public class SpellManager : MonoBehaviour
             int i = 0;
             foreach (Spell spell in spells)
             {
-                if (isSpellActive[i] && spell.level == selectedSpell.level + 1 && spell.parentSpell && spell.parentSpell.spellName == selectedSpell.spellName)
+                if (ElementQuestGameManager.instance.isSpellActive[i] && spell.level == selectedSpell.level + 1 && spell.parentSpell && spell.parentSpell.spellName == selectedSpell.spellName)
                     selectableSpells.Add(spell);
                 i++;
             }
