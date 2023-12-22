@@ -7,6 +7,7 @@ public class TeleportManager : MonoBehaviour
 {
     public GameObject GameCharacter;
     public GameObject CenterEye;
+    private UIManager UIManager;
 
     private RaycastHit hit;
     private GameObject HitColliderSave;
@@ -19,6 +20,7 @@ public class TeleportManager : MonoBehaviour
     {
         layerMask = 1 << 8;
         boxlayerMask = 1 << 9;
+        UIManager = GameObject.FindFirstObjectByType<UIManager>();
     }
 
     // Update is called once per frame
@@ -52,11 +54,12 @@ public class TeleportManager : MonoBehaviour
         }
         else
         {
-            if(Physics.Raycast(CenterEye.transform.position, CenterEye.transform.forward, out hit, 17f, boxlayerMask))
+            if(Physics.Raycast(CenterEye.transform.position, CenterEye.transform.forward, out hit, 25f, boxlayerMask))
             {
                 int cardNum = hit.transform.GetComponent<BoxScript>().CardNum;
                 if (ElementQuestGameManager.instance.isSpellActive[cardNum] == false)
                 {
+                    UIManager.ShowMessage("상자를 발견했다! 새로운 마법을 익혔다!");
                     ElementQuestGameManager.instance.isSpellActive[cardNum] = true;
                     hit.transform.gameObject.GetComponent<MeshCollider>().enabled = false;
                     Destroy(hit.transform.GetChild(0).gameObject);
@@ -64,6 +67,7 @@ public class TeleportManager : MonoBehaviour
                 else
                 {
                     //already get
+                    UIManager.ShowMessage("빈 상자다.");
                     hit.transform.gameObject.GetComponent<MeshCollider>().enabled = false;
                     Destroy(hit.transform.GetChild(0).gameObject);
                 }

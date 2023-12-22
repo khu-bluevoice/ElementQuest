@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    private static UIManager instance = null;
-
     [SerializeField]
     private GameObject messagePrefab;
 
@@ -17,33 +15,11 @@ public class UIManager : MonoBehaviour
 
     void Awake()
     {
-        if (null == instance)
-        {
-            instance = this;
-
-            Transform mainCameraTransform = Camera.main.transform;
-            transform.SetParent(mainCameraTransform, false);
-
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        Transform mainCameraTransform = Camera.main.transform;
+        transform.SetParent(mainCameraTransform, false);
     }
 
     //게임 매니저 인스턴스에 접근할 수 있는 프로퍼티. static이므로 다른 클래스에서 맘껏 호출할 수 있다.
-    public static UIManager Instance
-    {
-        get
-        {
-            if (null == instance)
-            {
-                return null;
-            }
-            return instance;
-        }
-    }
 
     bool isDisplaying = false;
     private void Update()
@@ -103,27 +79,27 @@ public class UIManager : MonoBehaviour
             messageObject.GetComponent<Image>().color = b;
             yield return null;
         }
-        while (t < 30f)
+        while (t < 38f)
         {
             t += Time.deltaTime * animtionTime;
             yield return null;
         }
-        while (t < 31f)
+        while (t < 39f)
         {
             t += Time.deltaTime * animtionTime;
-            float opacity = Mathf.Lerp(to, from, t - 30f);
+            float opacity = Mathf.Lerp(to, from, t - 45f);
             Color c = messageObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().color;
             c.a = opacity;
             messageObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().color = c;
 
             Color b = messageObject.GetComponent<Image>().color;
-            b.a = Mathf.Lerp(0.8f, 0, t - 30f);
+            b.a = Mathf.Lerp(0.8f, 0, t - 45f);
             messageObject.GetComponent<Image>().color = b;
 
             yield return null;
         }
         Destroy(messageObject);
-        while (t < 35f)
+        while (t < 43f)
         {
             t += Time.deltaTime * animtionTime;
             yield return null;
@@ -131,5 +107,10 @@ public class UIManager : MonoBehaviour
 
         isDisplaying = false;
         yield return 0;
+    }
+    public void SetPos()
+    {
+        Transform mainCameraTransform = Camera.main.transform;
+        transform.SetParent(mainCameraTransform, false);
     }
 }
