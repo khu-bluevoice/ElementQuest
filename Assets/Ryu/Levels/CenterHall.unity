@@ -17212,6 +17212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e62a070d72e6e4746b17d90d766f8f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorial: 0
   isSpellActive: 010000010000010000010000
 --- !u!4 &843309961
 Transform:
@@ -23742,7 +23743,11 @@ PrefabInstance:
     - target: {fileID: -6800099877926898254, guid: 4bfd1949911039a4ab39e82a53a8f362, type: 3}
       propertyPath: MainCamera
       value: 
-      objectReference: {fileID: 2072325968}
+      objectReference: {fileID: 2072325972}
+    - target: {fileID: -6800099877926898254, guid: 4bfd1949911039a4ab39e82a53a8f362, type: 3}
+      propertyPath: SkillManager
+      value: 
+      objectReference: {fileID: 1789579197}
     - target: {fileID: -6800099877926898254, guid: 4bfd1949911039a4ab39e82a53a8f362, type: 3}
       propertyPath: TeleportManager
       value: 
@@ -42209,7 +42214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 168fcd9cf910f9d48aff6d5961af1fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Earth1: {fileID: 0}
   PlayerHP: 100
 --- !u!4 &2072325972 stripped
 Transform:

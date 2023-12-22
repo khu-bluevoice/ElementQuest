@@ -69,7 +69,7 @@ public class TeleportManager : MonoBehaviour
                 int cardNum = hit.transform.GetComponent<BoxScript>().CardNum;
                 if (ElementQuestGameManager.instance.isSpellActive[cardNum] == false)
                 {
-                    UIManager.ShowMessage("   Ú¸   ß°  ß´ !    Î¿               !");
+                    UIManager.ShowMessage("»óÀÚ¸¦ ¹ß°ßÇß´Ù! »õ·Î¿î ¸¶¹ýÀ» ÀÍÇû´Ù!");
                     ElementQuestGameManager.instance.isSpellActive[cardNum] = true;
                     hit.transform.gameObject.GetComponent<MeshCollider>().enabled = false;
                     Destroy(hit.transform.GetChild(0).gameObject);
@@ -77,7 +77,7 @@ public class TeleportManager : MonoBehaviour
                 else
                 {
                     //already get
-                    UIManager.ShowMessage("      Ú´ .");
+                    UIManager.ShowMessage("ºó »óÀÚ´Ù.");
                     hit.transform.gameObject.GetComponent<MeshCollider>().enabled = false;
                     Destroy(hit.transform.GetChild(0).gameObject);
                 }

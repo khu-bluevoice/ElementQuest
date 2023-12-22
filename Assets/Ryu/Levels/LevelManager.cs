@@ -49,7 +49,6 @@ public class LevelManager : MonoBehaviour
     {
         if (Cleared)
         {
-            Debug.Log("DDDDDDDD");
             GameObject[] EndObjects = GameObject.FindGameObjectsWithTag("Finish");
             foreach (GameObject EndObject in EndObjects)
             {
@@ -59,7 +58,7 @@ public class LevelManager : MonoBehaviour
             {
                 LevelMoveTeleportObject.SetActive(true);
             }
-            UIManager.ShowMessage("이미 클리어하신 방입니다.");
+            UIManager.ShowMessage("이미 클리어 한 방입니다.");
             enabled = false;
         }
         else

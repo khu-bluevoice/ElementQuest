@@ -36,7 +36,7 @@ public class TeleportPossible : MonoBehaviour
     {
         if(!IsSetWhite)
         {
-            Debug.Log("dadada");
+            //Debug.Log("dadada");
             RedObj.SetActive(false);
             WhiteObj.SetActive(true);
             IsSetWhite = true;
