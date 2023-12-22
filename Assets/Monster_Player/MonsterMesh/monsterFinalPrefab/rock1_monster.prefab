@@ -4203,7 +4203,7 @@ GameObject:
   - component: {fileID: 4519818052352711453}
   - component: {fileID: 7655260440749651108}
   - component: {fileID: 3730369208683508497}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rock1_monster
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -4369,9 +4369,11 @@ MonoBehaviour:
   monsterSkillPos: {fileID: 0}
   monsterSkill: {fileID: 0}
   target: {fileID: 0}
+  hudDamageText: {fileID: 0}
+  hudPos: {fileID: 0}
   hp: 100
   monsterElement: 0
-  skillElemnt: 0
+  waitingtime: 0.5
 --- !u!1 &8264953831996421725
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,21 +22,21 @@ public class Player : MonoBehaviour
             StartCoroutine(PlayerDamaged());
             Debug.LogWarning(PlayerHP);
 
-            if(PlayerHP <= 0)
-            {
-                SceneManager.LoadScene("GameClearScene");
-            }
+            //if(PlayerHP <= 0)
+            //{
+            //    SceneManager.LoadScene("GameClearScene");
+            //}
             //PlayerDamaged(10);
         }
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Instantiate(Earth1, transform.position + transform.forward, transform.rotation);
-        }
-    }
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Q))
+    //    {
+    //        Instantiate(Earth1, transform.position + transform.forward, transform.rotation);
+    //    }
+    //}
 
     IEnumerator PlayerDamaged()
     {

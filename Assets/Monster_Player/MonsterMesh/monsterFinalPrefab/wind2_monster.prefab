@@ -1551,7 +1551,7 @@ GameObject:
   - component: {fileID: 7880806361133771742}
   - component: {fileID: 1344399009525103254}
   - component: {fileID: 3143223248548015314}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wind2_monster
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1687,9 +1687,11 @@ MonoBehaviour:
   monsterSkillPos: {fileID: 8785142284274929666}
   monsterSkill: {fileID: 114880, guid: f1a6f19a6b05d624cabbeb3bebc6c0e2, type: 3}
   target: {fileID: 0}
+  hudDamageText: {fileID: 0}
+  hudPos: {fileID: 0}
   hp: 100
   monsterElement: 0
-  skillElemnt: 0
+  waitingtime: 0.5
 --- !u!1 &3050037183155736892
 GameObject:
   m_ObjectHideFlags: 0

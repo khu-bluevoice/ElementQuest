@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 4411121353908670955}
   - component: {fileID: 187776368909130960}
   - component: {fileID: 5811718169673047956}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: fire2_monster
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -711,9 +711,11 @@ MonoBehaviour:
   monsterSkillPos: {fileID: 0}
   monsterSkill: {fileID: 0}
   target: {fileID: 0}
+  hudDamageText: {fileID: 0}
+  hudPos: {fileID: 0}
   hp: 200
   monsterElement: 0
-  skillElemnt: 0
+  waitingtime: 0.5
 --- !u!1 &3004816954218135888
 GameObject:
   m_ObjectHideFlags: 0

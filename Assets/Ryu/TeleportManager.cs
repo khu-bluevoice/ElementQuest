@@ -32,12 +32,12 @@ public class TeleportManager : MonoBehaviour
         if (Physics.Raycast(CenterEye.transform.position, CenterEye.transform.forward, out hit, Mathf.Infinity, layerMask))
         {
             HitColliderSave = hit.collider.gameObject;
-            Debug.Log("Hit TeleportPoint " + hit.collider.gameObject.name);
+            //Debug.Log("Hit TeleportPoint " + hit.collider.gameObject.name);
             Debug.DrawRay(CenterEye.transform.position, CenterEye.transform.forward * hit.distance, Color.red);
 
             hit.collider.gameObject.SendMessage("_OnTriggerEnter");
 
-            Debug.Log(hit.collider.gameObject.name);
+            //Debug.Log(hit.collider.gameObject.name);
         }
         else
         {

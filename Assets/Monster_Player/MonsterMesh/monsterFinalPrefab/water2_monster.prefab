@@ -671,7 +671,7 @@ GameObject:
   - component: {fileID: 4460419542131318619}
   - component: {fileID: 2486215974397441689}
   - component: {fileID: 2129123891118175816}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: water2_monster
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -806,9 +806,11 @@ MonoBehaviour:
   monsterSkillPos: {fileID: 0}
   monsterSkill: {fileID: 0}
   target: {fileID: 0}
+  hudDamageText: {fileID: 0}
+  hudPos: {fileID: 0}
   hp: 200
   monsterElement: 0
-  skillElemnt: 0
+  waitingtime: 0.5
 --- !u!1 &3134677781194488147
 GameObject:
   m_ObjectHideFlags: 0

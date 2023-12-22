@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 2607421075076442790}
   - component: {fileID: 7665371104947636449}
   - component: {fileID: 7665038242576232732}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: fire1_monster
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -580,9 +580,11 @@ MonoBehaviour:
   monsterSkillPos: {fileID: 5783344344335427042}
   monsterSkill: {fileID: 174222, guid: ff983af6482f19f4ca9212e1f5b2df20, type: 3}
   target: {fileID: 0}
+  hudDamageText: {fileID: 0}
+  hudPos: {fileID: 0}
   hp: 100
   monsterElement: 0
-  skillElemnt: 0
+  waitingtime: 0.5
 --- !u!1 &909953625580604524
 GameObject:
   m_ObjectHideFlags: 0
