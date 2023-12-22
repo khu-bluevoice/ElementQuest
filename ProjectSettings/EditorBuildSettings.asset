@@ -35,7 +35,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Oculus/Interaction/Samples/Scenes/Examples/PoseExamples.unity
     guid: 4fe358b21fe17764db89a9ab9f202327
-  - enabled: 1
+  - enabled: 0
     path: Assets/dongmin/Scene/TestSkill.unity
     guid: 6707edb96bbcd3a4d9e39dc3ce8fd26d
   - enabled: 0

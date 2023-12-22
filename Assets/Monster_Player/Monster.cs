@@ -24,6 +24,9 @@ public class Monster : MonoBehaviour
     protected Animator anim;
     protected Rigidbody rigid;
 
+    private LevelManager LevelManager;
+
+
     //for text flooting
     public GameObject hudDamageText;
     public Transform hudPos;
@@ -48,6 +51,8 @@ public class Monster : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         player = GetComponent<GameObject>();
 
+        LevelManager = GameObject.FindFirstObjectByType<LevelManager>();
+
         Invoke("ChaseStart", 1);
     }
 
@@ -63,6 +68,7 @@ public class Monster : MonoBehaviour
             nav.destination = target.position;
             nav.isStopped = !isChase;
         }
+
         if (damaging)
         {
             timer += Time.deltaTime;
@@ -109,6 +115,7 @@ public class Monster : MonoBehaviour
                 targetRadius = 3f;
                 targetRange = 5f;
                 break;
+
             case Type.Boss:
                 targetRadius = 0.7f;
                 targetRange = 1f;
@@ -228,11 +235,14 @@ public class Monster : MonoBehaviour
 
             if (hp <= 0)
             {
-                Debug.Log(gameObject.name + " 죽었습니다.!");
-                Destroy(gameObject, 4);
+                //Debug.Log(gameObject.name + " 죽었습니다.!");
+                anim.SetBool("attack", false);
+                anim.SetBool("die", true);
+                Destroy(gameObject, 2);
             }
             else
             {
+                StartCoroutine(KnockBack());
                 Debug.Log(gameObject.name + "공격받음 : " + damage + "남은체력 : " + hp + "입니다.");
             }
             damaging = true;
@@ -242,11 +252,17 @@ public class Monster : MonoBehaviour
 
     IEnumerator KnockBack()
     {
-        transform.position += player.transform.forward * 2;
+        //transform.position += player.transform.forward * 1;
+        //yield return new WaitForSeconds(0.5f);
         anim.SetBool("damaged", true);
-        nav.speed = 0;
-        yield return new WaitForSeconds(2f);
+        //nav.speed = 0;
+        yield return new WaitForSeconds(1f);
         nav.speed = 3;
         anim.SetBool("damaged", false);
+    }
+
+    void OnDestroy()
+    {
+        LevelManager.MonsterCount--;
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public GameObject Earth1;
     public float PlayerHP = 100.0f;
 
     void Start()

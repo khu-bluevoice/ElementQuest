@@ -15902,7 +15902,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 775443499}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Monsters
   m_TagString: Enemy
   m_Icon: {fileID: 0}
