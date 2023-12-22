@@ -6,6 +6,7 @@ public class ElementQuestGameManager : MonoBehaviour
 {
     public Dictionary<string, bool> ClearMap = new();
     public static ElementQuestGameManager instance = null;
+    public bool tutorial = false;
     
     [SerializeField]
     public bool[] isSpellActive = {true, false, false, true, false, false, true, false, false, true, false, false };
