@@ -4203,7 +4203,7 @@ GameObject:
   - component: {fileID: 4519818052352711453}
   - component: {fileID: 7655260440749651108}
   - component: {fileID: 3730369208683508497}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rock1_monster
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -4325,8 +4325,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.962277, z: 1}
-  m_Center: {x: 0, y: 0.95483345, z: 0}
+  m_Size: {x: 1, y: 1.7890059, z: 1}
+  m_Center: {x: 0, y: 1.0414691, z: 0}
 --- !u!195 &7655260440749651108
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4336,7 +4336,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8245108084913348000}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.7
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -4369,8 +4369,11 @@ MonoBehaviour:
   monsterSkillPos: {fileID: 0}
   monsterSkill: {fileID: 0}
   target: {fileID: 0}
+  hudDamageText: {fileID: 0}
+  hudPos: {fileID: 0}
   hp: 100
-  MonsterElement: 0
+  monsterElement: 0
+  waitingtime: 0.5
 --- !u!1 &8264953831996421725
 GameObject:
   m_ObjectHideFlags: 0

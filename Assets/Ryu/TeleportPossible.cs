@@ -26,7 +26,7 @@ public class TeleportPossible : MonoBehaviour
 
     void _OnTriggerEnter()
     {
-        Debug.Log("haha");
+        //Debug.Log("haha");
         WhiteObj.SetActive(false);
         RedObj.SetActive(true);
         IsSetWhite = false;

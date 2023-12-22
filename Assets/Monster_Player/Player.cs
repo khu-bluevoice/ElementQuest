@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -19,18 +20,23 @@ public class Player : MonoBehaviour
          
             PlayerHP -= 10;
             StartCoroutine(PlayerDamaged());
-            Debug.Log(PlayerHP);
+            Debug.LogWarning(PlayerHP);
+
+            //if(PlayerHP <= 0)
+            //{
+            //    SceneManager.LoadScene("GameClearScene");
+            //}
             //PlayerDamaged(10);
         }
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Instantiate(Earth1, transform.position + transform.forward, transform.rotation);
-        }
-    }
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Q))
+    //    {
+    //        Instantiate(Earth1, transform.position + transform.forward, transform.rotation);
+    //    }
+    //}
 
     IEnumerator PlayerDamaged()
     {

@@ -24,10 +24,23 @@ public class Monster : MonoBehaviour
     protected Animator anim;
     protected Rigidbody rigid;
 
-    public float hp = 100f;
-    public Element monsterElement;
-    public Element skillElemnt;
+    //for text flooting
+    public GameObject hudDamageText;
+    public Transform hudPos;
 
+    [SerializeField]
+    private float hp = 100f;
+    [SerializeField]
+    private Element monsterElement;
+    private float timer = 0.0f;
+    [SerializeField]
+    private float waitingtime = 0.5f; // ½ºÅ³ µ¥¹ÌÁö°¡ µé¾î°¡´Â °£°İ
+    // ºÒ¼Ó¼º ¸ó½ºÅÍ´Â ¹° ½ºÅ³¿¡ ¾àÇÏ´Ù.
+    // ¹°¼Ó¼º ¸ó½ºÅÍ´Â ¶¥ ½ºÅ³¿¡ ¾àÇÏ´Ù.
+    // ¶¥¼Ó¼º ¸ó½ºÅÍ´Â ¹Ù¶÷ ½ºÅ³¿¡ ¾àÇÏ´Ù.
+    // ¹Ù¶÷¼Ó¼º ¸ó½ºÅÍ´Â ºÒ ½ºÅ³¿¡ ¾àÇÏ´Ù.
+    private bool damaging = false;
+    private bool waitingend = false;
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
@@ -49,6 +62,20 @@ public class Monster : MonoBehaviour
             //nav.SetDestination(target.position);
             nav.destination = target.position;
             nav.isStopped = !isChase;
+        }
+        if (damaging)
+        {
+            timer += Time.deltaTime;
+            if (timer > waitingtime)
+            {
+                waitingend = true;
+                damaging = false;
+            }
+        }
+        if (waitingend)
+        {
+            timer = 0.0f;
+            waitingend = false;
         }
     }
 
@@ -82,6 +109,10 @@ public class Monster : MonoBehaviour
                 targetRadius = 3f;
                 targetRange = 5f;
                 break;
+            case Type.Boss:
+                targetRadius = 0.7f;
+                targetRange = 1f;
+                break;
         }
 
         RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, targetRadius, transform.forward, targetRange, LayerMask.GetMask("Player"));
@@ -100,6 +131,7 @@ public class Monster : MonoBehaviour
 
         switch (monsterType)
         {
+            case Type.Boss:
             case Type.Short:
                 yield return new WaitForSeconds(0.2f);
                 meleeAttack.enabled = true;
@@ -113,7 +145,7 @@ public class Monster : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 GameObject instantBullet = Instantiate(monsterSkill, monsterSkillPos.transform.position, monsterSkillPos.transform.rotation);
                 Rigidbody rigidSkill = instantBullet.GetComponent<Rigidbody>();                  
-                rigidSkill.velocity = transform.forward * 50;
+                rigidSkill.velocity = transform.forward * 20;
 
                 yield return new WaitForSeconds(2f);
                 break;
@@ -135,67 +167,77 @@ public class Monster : MonoBehaviour
     {
         return monsterElement;
     }
-    // ë¶ˆì†ì„± ëª¬ìŠ¤í„°ëŠ” ë¬¼ ìŠ¤í‚¬ì— ì•½í•˜ë‹¤.
-    // ë¬¼ì†ì„± ëª¬ìŠ¤í„°ëŠ” ë•… ìŠ¤í‚¬ì— ì•½í•˜ë‹¤.
-    // ë•…ì†ì„± ëª¬ìŠ¤í„°ëŠ” ë°”ëŒ ìŠ¤í‚¬ì— ì•½í•˜ë‹¤.
-    // ë°”ëŒì†ì„± ëª¬ìŠ¤í„°ëŠ” ë¶ˆ ìŠ¤í‚¬ì— ì•½í•˜ë‹¤.
-    public virtual void Damaged(Element skillElement, float damage)
+    // ë¶ˆì†??ëª¬ìŠ¤?°ëŠ” ë¬??¤í‚¬???½í•˜??
+    // ë¬¼ì†??ëª¬ìŠ¤?°ëŠ” ???¤í‚¬???½í•˜??
+    // ?…ì†??ëª¬ìŠ¤?°ëŠ” ë°”ëŒ ?¤í‚¬???½í•˜??
+    // ë°”ëŒ?ì„± ëª¬ìŠ¤?°ëŠ” ë¶??¤í‚¬???½í•˜??
+    public virtual void Damaged(object[] skillprops)
     {
-        if(monsterElement == Element.Fire)
+        Element skillElement = (Element)skillprops[0];
+        float damage = (float)skillprops[1];
+        if (!damaging)
         {
-            if (skillElement == Element.Water)
+            if (monsterElement == Element.Fire)
             {
-                hp -= damage;
+                if (skillElement == Element.Water)
+                {
+                    hp -= damage;
+                }
+                else
+                {
+                    damage *= 0.5f;
+                    hp -= damage;
+                }
+            }
+            else if (monsterElement == Element.Water)
+            {
+                if (skillElement == Element.Earth)
+                {
+                    hp -= damage;
+                }
+                else
+                {
+                    damage *= 0.5f;
+                    hp -= damage;
+                }
+            }
+            else if (monsterElement == Element.Earth)
+            {
+                if (skillElement == Element.Wind)
+                {
+                    hp -= damage;
+                }
+                else
+                {
+                    damage *= 0.5f;
+                    hp -= damage;
+                }
+            }
+            else //if (monsterElement == Element.Wind)
+            {
+                if (skillElement == Element.Fire)
+                {
+                    hp -= damage;
+                }
+                else
+                {
+                    damage *= 0.5f;
+                    hp -= damage;
+                }
+            }
+
+            if (hp <= 0)
+            {
+                Debug.Log(gameObject.name + " Á×¾ú½À´Ï´Ù.!");
+                Destroy(gameObject, 4);
             }
             else
             {
-                hp -= damage * 0.5f;
+                Debug.Log(gameObject.name + "°ø°İ¹ŞÀ½ : " + damage + "³²ÀºÃ¼·Â : " + hp + "ÀÔ´Ï´Ù.");
             }
+            damaging = true;
         }
-        else if(monsterElement == Element.Water)
-        {
-            if (skillElement == Element.Earth)
-            {
-                hp -= damage;
-            }
-            else
-            {
-                hp -= damage * 0.5f;
-            }
-        }
-        else if(monsterElement == Element.Earth)
-        {
-            if (skillElement == Element.Wind)
-            {
-                hp -= damage;
-            }
-            else
-            {
-                hp -= damage * 0.5f;
-            }
-        }
-        else if(monsterElement == Element.Wind)
-        {
-            if (skillElement == Element.Fire)
-            {
-                hp -= damage;
-            }
-            else
-            {
-                hp -= damage * 0.5f;
-            }
-        }
-        if (hp <= 0)
-        {
-            Debug.Log(gameObject.name + " ì£½ì—ˆìŠµë‹ˆë‹¤.!");
-            anim.SetBool("die", true);
-            Destroy(gameObject, 1.5f);
-        }
-        else
-        {
-            StartCoroutine(KnockBack());
-            Debug.Log(gameObject.name + "ê³µê²©ë°›ìŒ : " + damage + "ë‚¨ì€ì²´ë ¥ : " + hp + "ì…ë‹ˆë‹¤.");
-        }
+
     }
 
     IEnumerator KnockBack()
