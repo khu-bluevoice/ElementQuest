@@ -94,7 +94,7 @@ public class SpellManager : MonoBehaviour
     public void HandleSpellDetected(SpellName detectedSpell)
     {
         // n초에 한번씩 인식 가능
-        if (delay < 1f) return;
+        if (delay < 0.2f) return;
         else delay = 0;
 
         if (detectedSpell == SpellName.TELEPORT)
