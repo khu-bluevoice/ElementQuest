@@ -93,16 +93,20 @@ public class SpellManager : MonoBehaviour
     // 동작을 인식
     public void HandleSpellDetected(SpellName detectedSpell)
     {
-        // n초에 한번씩 인식 가능
-        if (delay < 0.2f) return;
-        else delay = 0;
-
         if (detectedSpell == SpellName.TELEPORT)
         {
+            // n초에 한번씩 인식 가능
+            if (delay < 0.2f) return;
+            else delay = 0;
+
             TeleportManager.SendMessage("Teleport");
         }
         else if (detectedSpell == SpellName.SPELL_END)
         {
+            // n초에 한번씩 인식 가능
+            if (delay < 0.2f) return;
+            else delay = 0;
+
             // 스킬 사용
             SkillManager.CastSkill(selectedSpell.spellName);
             // update spell selector
@@ -113,6 +117,10 @@ public class SpellManager : MonoBehaviour
         }
         else if (detectedSpell == SpellName.SPELL_START)
         {
+            // n초에 한번씩 인식 가능
+            if (delay < 0.2f) return;
+            else delay = 0;
+
             selectedSpell = startSpell;
             selectSpellOfSelector(detectedSpell);
             UpdateSelectableSpells();
@@ -125,6 +133,10 @@ public class SpellManager : MonoBehaviour
             {
                 if (ElementQuestGameManager.instance.isSpellActive[index] && selectableSpells.IndexOf(spells[index]) != -1)
                 {
+                    // n초에 한번씩 인식 가능
+                    if (delay < 0.2f) return;
+                    else delay = 0;
+
                     // 스킬 선택
                     selectedSpell = spells[index];
                     selectSpellOfSelector(detectedSpell);
@@ -173,7 +185,6 @@ public class SpellManager : MonoBehaviour
             selectableSpells.Add(endSpell);
             //selectableSpells.Add(moveSpell); 
         }
-
         spellSelector.spells = selectableSpells;
     }
 }
